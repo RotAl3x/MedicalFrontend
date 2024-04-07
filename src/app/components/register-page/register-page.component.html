@@ -1,0 +1,61 @@
+<div class="form-container">
+  <h2>Înregistrează-te</h2>
+  <form [formGroup]="form" class="form-inputs">
+    <mat-form-field appearance="outline" class="mb-2">
+      <input formControlName="email" matInput placeholder="Email*">
+      <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['required']">
+        Obligatoriu
+      </mat-error>
+      <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['email']">
+        Invalid email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="mb-2">
+      <input formControlName="lastName" matInput placeholder="Nume*">
+      <mat-error *ngIf="form.controls['lastName'].touched && form.controls['lastName'].errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="mb-2">
+      <input formControlName="firstName" matInput placeholder="Prenume*">
+      <mat-error *ngIf="form.controls['firstName'].touched && form.controls['firstName'].errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="mb-2">
+      <input formControlName="phoneNumber" matInput placeholder="Numărul de telefon*">
+      <mat-error *ngIf="form.controls['phoneNumber'].touched && form.controls['phoneNumber'].errors?.['required']">
+        Obligatoriu
+      </mat-error>
+      <mat-error *ngIf="form.controls['phoneNumber'].touched && form.controls['phoneNumber'].errors?.['notMatch'] && !form.controls['phoneNumber'].errors?.['required']">
+        Numărul de telefon incorect
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="mb-2">
+      <input formControlName="password" matInput placeholder="Parolă*" type="password">
+      <mat-error *ngIf="form.controls['password'].touched && form.controls['password'].errors?.['required']">
+        Obligatoriu
+      </mat-error>
+      <mat-error *ngIf="form.controls['password'].touched &&  form.controls['password'].errors?.['minlength']">
+        Minim 6 litere
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <input formControlName="confirmPassword" matInput placeholder="Confirmă Parola*" type="password">
+      <mat-error *ngIf="form.controls['confirmPassword'].touched && form.controls['confirmPassword'].errors?.['required']">
+        Obligatoriu
+      </mat-error>
+      <mat-error *ngIf="form.controls['confirmPassword'].touched && form.controls['confirmPassword'].errors?.['notMatch']">
+        Parola nu este la fel
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <div class="buttons">
+    <button (click)="submit($event)" mat-raised-button>Înregistrează-te</button>
+  </div>
+</div>
