@@ -15,13 +15,17 @@ import {MatCardModule} from "@angular/material/card";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSelectModule} from "@angular/material/select";
 import { RegisterPageComponent } from './components/register-page/register-page.component';
+import { MenuComponent } from './components/menu/menu.component';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,8 @@ import { RegisterPageComponent } from './components/register-page/register-page.
     MatCardModule,
     MatDialogModule,
     MatSelectModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
