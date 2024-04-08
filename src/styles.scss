@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@use "assets/variables.scss";
 @use '@angular/material' as mat;
 
 @include mat.core();
 @import '@angular/material/theming';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 
 .form-container{
   display: flex;
@@ -21,4 +23,8 @@
 
 .width-350px{
   width: 350px;
+}
+
+.background-primary-color{
+  background-color: variables.$primary-color;
 }
