@@ -19,6 +19,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import { PricesPageComponent } from './components/prices-page/prices-page.component';
+import { DoctorsPageComponent } from './components/doctors-page/doctors-page.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { PricesPageComponent } from './components/prices-page/prices-page.compon
     LoginPageComponent,
     RegisterPageComponent,
     MenuComponent,
-    PricesPageComponent
+    PricesPageComponent,
+    DoctorsPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,29 @@
-<div class="h-75 d-flex justify-content-center align-items-center background-primary-color">
-  <h2>Oferte</h2>
-</div>
-<div class="d-flex flex-column justify-content-center">
-  <div *ngFor="let price of prices">
-    <div>{{price.name}}</div>
+<app-header [title]="'Oferte'"></app-header>
+<div class="d-flex flex-column justify-content-center margin-top-100px">
+  <div *ngFor="let price of prices" class="d-flex justify-content-center flex-column align-items-center">
+    <h2 class="mb-0">{{ price.name }}
+      <div class="line w-100"></div>
+    </h2>
+    <div class="m-4 d-flex flex-column align-items-center w-75 margin-bottom-75px">
+      <div>{{ price.description }}</div>
+      <div class="m-3 d-flex justify-content-between max-width-600px w-100 align-items-center">
+        <div
+          class="background-primary-color card-border-radius d-flex flex-column justify-content-center align-items-center text-white p-3">
+          <h4>O sedință</h4>
+          <div>{{ price.priceForOne }} LEI</div>
+        </div>
+        <div
+          class="background-secondary-color card-border-radius d-flex flex-column justify-content-center align-items-center p-3">
+          <h4>{{ price.numberOfMeets }} sedințe</h4>
+          <div>{{ price.priceForAllMeets }} LEI</div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+<div class="d-flex flex-column align-items-center margin-bottom-75px">
+  <h4>
+    Ești interesat?
+  </h4>
+  <button [routerLink]="'/login'" mat-raised-button>Fă-ți o rezervare</button>
 </div>

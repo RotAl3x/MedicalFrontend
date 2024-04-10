@@ -1,0 +1,14 @@
+@use "../../../assets/variables.scss";
+
+.doctor-img{
+  width: 150px;
+  height: 150px;
+}
+
+.width-500px{
+  width: 500px;
+}
+
+.border-card{
+  border: solid variables.$primary-color;
+}
