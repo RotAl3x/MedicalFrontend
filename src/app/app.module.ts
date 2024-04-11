@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RouterOutlet} from "@angular/router";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -21,6 +21,8 @@ import {MatIconModule} from "@angular/material/icon";
 import { PricesPageComponent } from './components/prices-page/prices-page.component';
 import { DoctorsPageComponent } from './components/doctors-page/doctors-page.component';
 import { HeaderComponent } from './components/header/header.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {HttpRequestInterceptorInterceptor} from "./interceptors/http-request-interceptor.interceptor";
 
 
 @NgModule({
@@ -50,9 +52,11 @@ import { HeaderComponent } from './components/header/header.component';
     MatSelectModule,
     MatMenuModule,
     MatIconModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+    {provide: HTTP_INTERCEPTORS, useClass:HttpRequestInterceptorInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })
