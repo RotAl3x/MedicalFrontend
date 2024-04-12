@@ -6,3 +6,18 @@
     transform: scale(1.2);
   }
 }
+
+::ng-deep .carousel-control-prev-icon{
+  display: none;
+}
+::ng-deep .carousel-control-next-icon{
+  display: none;
+}
+
+.home-section-container{
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

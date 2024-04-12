@@ -1,6 +1,23 @@
 <app-header [title]="'Medical'"></app-header>
-<div class="background-secondary-color py-4">
+<div class="background-secondary-color py-4 mb-4 home-section-container">
   <div *ngFor="let detail of details" class="d-flex justify-content-center align-items-center my-1 px-2">
     <h3 class="details-hover">{{ detail }}</h3>
   </div>
+</div>
+<div style="width: 99vw" class="home-section-container mb-4">
+  <carousel [isAnimated]="true">
+    <slide *ngFor="let testimonialPerson of testimonialPersons; let index=index">
+      <app-medical-card [name]="testimonialPerson.name" [description]="testimonialPerson.description"
+                        [photoName]="testimonialPerson.photoName" [maxWidth]="1000"></app-medical-card>
+    </slide>
+  </carousel>
+  <br/>
+</div>
+<div *ngIf="apiLoaded | async" class="w-100 d-flex home-section-container background-third-color py-4">
+  <h4 class="p-3">
+    <b>Adresa:</b> {{environment.address}}
+  </h4>
+  <google-map [options]="options" width="90vw" >
+    <map-marker [position]="markerPosition"></map-marker>
+  </google-map>
 </div>

@@ -10,16 +10,10 @@ import {environment} from "../../../environment/environment";
 })
 export class DoctorsPageComponent implements OnInit{
   doctors:IDoctor[] = [];
-  private readonly _baseUrl = environment.apiUrl;
-
   constructor(private doctorService:DoctorService) {
   }
 
   async ngOnInit() {
     this.doctors = await this.doctorService.getAll();
-  }
-
-  photoLink(name:string | null){
-    return `${this._baseUrl}api/settings/photo/${name}`
   }
 }

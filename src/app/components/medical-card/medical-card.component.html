@@ -1,0 +1,7 @@
+<div class="d-flex flex-column border-card p-4 rounded " [style.max-width.px]="maxWidth">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>{{ name }}</h2>
+    <img class="rounded doctor-img" [src]="photoLink(photoName)" [alt]="name">
+  </div>
+  <h4>{{ description }}</h4>
+</div>
