@@ -1,0 +1,6 @@
+<app-header [title]="'Medical'"></app-header>
+<div class="background-secondary-color py-4">
+  <div *ngFor="let detail of details" class="d-flex justify-content-center align-items-center my-1 px-2">
+    <h3 class="details-hover">{{ detail }}</h3>
+  </div>
+</div>

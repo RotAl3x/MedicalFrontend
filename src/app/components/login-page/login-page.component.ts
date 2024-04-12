@@ -22,10 +22,10 @@ export class LoginPageComponent {
   }
 
   async ngOnInit() {
-    const session = await this.authService.getSession();
-    if (session) {
-      await this.router.navigate(['home']);
-    }
+    // const session = await this.authService.getSession();
+    // if (session) {
+    //   await this.router.navigate(['home']);
+    // }
   }
 
   openSnackBar(message: string, action: string) {

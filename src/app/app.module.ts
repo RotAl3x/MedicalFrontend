@@ -23,6 +23,7 @@ import { DoctorsPageComponent } from './components/doctors-page/doctors-page.com
 import { HeaderComponent } from './components/header/header.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {HttpRequestInterceptorInterceptor} from "./interceptors/http-request-interceptor.interceptor";
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {HttpRequestInterceptorInterceptor} from "./interceptors/http-request-int
     MenuComponent,
     PricesPageComponent,
     DoctorsPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

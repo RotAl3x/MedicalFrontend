@@ -1,0 +1,8 @@
+.details-hover{
+  cursor: default;
+  transition: transform .2s;
+  &:hover{
+    color: white;
+    transform: scale(1.2);
+  }
+}
