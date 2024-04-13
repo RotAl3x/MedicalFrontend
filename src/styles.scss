@@ -36,3 +36,12 @@
 .background-third-color{
   background-color: variables.$third-color;
 }
+
+.background-image-blue{
+  background: url("/assets/images/header-blue-image.jpeg") no-repeat center;
+  background-size: cover;
+}
+
+.breaking-line{
+  white-space: pre-line;
+}

@@ -28,6 +28,7 @@ import {CarouselModule} from "ngx-bootstrap/carousel";
 import {ButtonsModule} from "ngx-bootstrap/buttons";
 import { MedicalCardComponent } from './components/medical-card/medical-card.component';
 import {GoogleMapsModule} from "@angular/google-maps";
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {GoogleMapsModule} from "@angular/google-maps";
     DoctorsPageComponent,
     HeaderComponent,
     HomePageComponent,
-    MedicalCardComponent
+    MedicalCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
