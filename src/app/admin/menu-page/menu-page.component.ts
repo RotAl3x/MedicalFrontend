@@ -8,7 +8,7 @@ import {IMenuPage} from "../models/menu-page";
 })
 export class MenuPageComponent {
 
-  menuSections: IMenuPage[] = [{title: 'Programari', menu: []}, {title: 'Doctori', menu: [{name:'test',route:'home'},{name:'test',route:'home'}]}, {
+  menuSections: IMenuPage[] = [{title: 'Programari', menu: []}, {title: 'Doctori', menu: [{name:'Adauga',route:'register'},{name:'test',route:'home'}]}, {
     title: 'Website',
     menu: []
   }];

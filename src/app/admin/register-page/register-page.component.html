@@ -34,26 +34,6 @@
         Numărul de telefon incorect
       </mat-error>
     </mat-form-field>
-
-    <mat-form-field appearance="outline" class="mb-2">
-      <input formControlName="password" matInput placeholder="Parolă*" type="password">
-      <mat-error *ngIf="form.controls['password'].touched && form.controls['password'].errors?.['required']">
-        Obligatoriu
-      </mat-error>
-      <mat-error *ngIf="form.controls['password'].touched &&  form.controls['password'].errors?.['minlength']">
-        Minim 6 litere
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <input formControlName="confirmPassword" matInput placeholder="Confirmă Parola*" type="password">
-      <mat-error *ngIf="form.controls['confirmPassword'].touched && form.controls['confirmPassword'].errors?.['required']">
-        Obligatoriu
-      </mat-error>
-      <mat-error *ngIf="form.controls['confirmPassword'].touched && form.controls['confirmPassword'].errors?.['notMatch']">
-        Parola nu este la fel
-      </mat-error>
-    </mat-form-field>
   </form>
   <div class="d-flex justify-content-center width-350px">
     <button (click)="submit($event)" mat-raised-button>Înregistrează-te</button>

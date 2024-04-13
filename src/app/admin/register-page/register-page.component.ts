@@ -16,8 +16,6 @@ export class RegisterPageComponent {
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
     phoneNumber: ['', [Validators.required,this.phoneNumber()]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    confirmPassword: ['', [Validators.required,this.matchPassword()]]
   })
 
   constructor(private authService: AuthService,
@@ -28,13 +26,6 @@ export class RegisterPageComponent {
 
   openSnackBar(message: string, action: string) {
     this.snack.open(message, action);
-  }
-
-  matchPassword(): (control: AbstractControl) => { notMatch: string } | null {
-    return (control: AbstractControl) => {
-      const hasError = control?.value ? control?.value?.toString() !== this.form.controls.password.value : null;
-      return hasError? {notMatch: "not-match"}:  null;
-    };
   }
 
   phoneNumber(): (control: AbstractControl) => { notMatch: string } | null {
