@@ -36,7 +36,7 @@ export class HomePageComponent {
   constructor(private doctorService: DoctorService,
               private httpClient:HttpClient,
               private testimonialPersonService: TestimonialPersonService) {
-    this.apiLoaded = httpClient.jsonp('https://maps.googleapis.com/maps/api/js?key=AIzaSyAH0GgHPic0LHprsGgnnmb1g2r_WnWJkME', 'callback')
+    this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsKey}`, 'callback')
       .pipe(
         map(() => true),
         catchError(() => of(false)),
