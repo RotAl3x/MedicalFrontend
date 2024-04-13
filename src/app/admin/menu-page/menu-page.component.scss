@@ -1,0 +1,6 @@
+@use "../../../assets/variables.scss";
+
+.border-section{
+  border: solid variables.$primary-color;
+  width: 250px;
+}

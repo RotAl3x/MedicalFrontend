@@ -37,6 +37,10 @@
   background-color: variables.$third-color;
 }
 
+.color-primary-color{
+  color: variables.$primary-color;
+}
+
 .background-image-blue{
   background: url("/assets/images/header-blue-image.jpeg") no-repeat center;
   background-size: cover;

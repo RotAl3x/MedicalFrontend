@@ -1,0 +1,8 @@
+<div class="d-flex justify-content-center">
+<div *ngFor="let menuSection of menuSections" class="border-section d-flex flex-column m-5 align-items-center">
+  <h4 class="color-primary-color"><b>{{menuSection.title}}</b></h4>
+  <div *ngFor="let menu of menuSection.menu" class="m-2">
+    <button mat-stroked-button [routerLink]="'admin/' + menu.route">{{menu.name}}</button>
+  </div>
+</div>
+</div>

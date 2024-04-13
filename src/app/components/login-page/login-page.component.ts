@@ -41,7 +41,7 @@ export class LoginPageComponent {
     try {
       await this.authService.login(this.form.value);
       this.openSnackBar('Te-ai logat cu succes', 'OK');
-      await this.router.navigate(['/']);
+      await this.router.navigate(['/admin/home']);
     } catch (e) {
       this.openSnackBar('Mail-ul sau parola incorectă', 'OK');
     }
