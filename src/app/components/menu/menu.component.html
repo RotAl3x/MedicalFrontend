@@ -1,9 +1,14 @@
 <div class="menu-container d-flex justify-content-between align-items-center ps-5">
-  <div>Medical</div>
-  <button *ngIf="isAdminPage()" class="me-4" (click)="logout()" mat-raised-button>Log out</button>
+  <ng-container *ngIf="isAdminPage()" >
+    <div class="cursor-pointer" [routerLink]="'admin/home'">Medical</div>
+    <button class="me-4" (click)="logout()" mat-raised-button>Deconectați-vă</button>
+  </ng-container>
+  <ng-container *ngIf="!isAdminPage()" >
+  <div class="cursor-pointer"  [routerLink]="'/home'">Medical</div>
   <button *ngIf="!isAdminPage()" mat-icon-button [matMenuTriggerFor]="menu" class="menu-button-container">
     <mat-icon>more_vert</mat-icon>
   </button>
+  </ng-container>
   <mat-menu #menu="matMenu">
     <button mat-menu-item [routerLink]="'/home'">Acasă</button>
     <button mat-menu-item [routerLink]="'/doctors'">Doctori</button>

@@ -1,5 +1,5 @@
 <div class="form-container">
-  <h2>Înregistrează-te</h2>
+  <h2>Adaugă un doctor</h2>
   <form [formGroup]="form" class="form-inputs">
     <mat-form-field appearance="outline" class="mb-2">
       <input formControlName="email" matInput placeholder="Email*">
@@ -35,7 +35,8 @@
       </mat-error>
     </mat-form-field>
   </form>
-  <div class="d-flex justify-content-center width-350px">
-    <button (click)="submit($event)" mat-raised-button>Înregistrează-te</button>
+  <div class="d-flex justify-content-center width-350px mb-2">
+    <button (click)="submit($event)" mat-raised-button>Adaugă</button>
   </div>
+  <div> Parola doctor01</div>
 </div>
