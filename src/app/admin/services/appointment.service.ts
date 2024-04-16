@@ -1,46 +1,36 @@
-import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
+import {inject, Injectable} from '@angular/core';
+import {firstValueFrom, Observable, of, Subject} from "rxjs";
+import {HubConnection, HubConnectionBuilder, LogLevel} from "@microsoft/signalr";
+import {environment} from "../../../environment/environment";
+import {IAppointment} from "../models/appointment";
+import {IDoctor} from "../../models/doctor";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppointmentService {
-  private socket: WebSocket| undefined;
-  messageReceived: Subject<string> = new Subject<string>();
+  private hubConnectionBuilder!: HubConnection;
+  private _baseUrl: string = environment.apiUrl;
+  private http= inject(HttpClient);
 
-  socketServer1 = 'ws://localhost:8181';
-  constructor() { }
 
-  connect(): void {
-    this.socket = new WebSocket(this.socketServer1);
-
-    this.socket.onopen = () => {
-      console.log('WebSocket connection established.');
-    };
-
-    this.socket.onmessage = (event) => {
-      const message = event.data;
-      console.log('Received message:', message);
-      this.messageReceived.next(`RECEIVE: ${message}`);
-    };
-
-    this.socket.onclose = (event) => {
-      console.log('WebSocket connection closed:', event);
-      this.messageReceived.next(`WebSocket connection closed:`);
-    };
-
-    this.socket.onerror = (error) => {
-      console.error('WebSocket error:', error);
-      this.messageReceived.next(`WebSocket error`);
-    };
+  async connect() {
+    this.hubConnectionBuilder = new HubConnectionBuilder().withUrl(`${this._baseUrl}appointment`).configureLogging(LogLevel.Information).build();
+    await this.hubConnectionBuilder.start().then(() => console.log('Connection started.......!')).catch(err => console.log('Error while connect with server'));
+    return true;
   }
 
-  sendMessage(message: string): void {
-    this.socket?.send(message);
-    this.messageReceived.next(`SEND: ${message}`);
+  appointmentUpdated$(): Observable<IAppointment> {
+    let pendingAppointmentUpdatedSubject = new Subject<IAppointment>();
+    this.hubConnectionBuilder.on('SendAppointmentToUser', (result: IAppointment) => {
+      pendingAppointmentUpdatedSubject.next(result);
+    });
+    return pendingAppointmentUpdatedSubject;
   }
 
-  closeConnection(): void {
-    this.socket?.close();
+  async getAllByRoomIdOrDoctorId(roomId: string, doctorId:string){
+    const url = this._baseUrl + `api/appointment/${roomId}/${doctorId}`;
+    return firstValueFrom(this.http.get<IAppointment[]>(url));
   }
 }
