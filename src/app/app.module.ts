@@ -30,6 +30,7 @@ import { MedicalCardComponent } from './components/medical-card/medical-card.com
 import {GoogleMapsModule} from "@angular/google-maps";
 import { FooterComponent } from './components/footer/footer.component';
 import { MenuPageComponent } from './admin/menu-page/menu-page.component';
+import { AppointmentsPageComponent } from './admin/appointments-page/appointments-page.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MenuPageComponent } from './admin/menu-page/menu-page.component';
     HomePageComponent,
     MedicalCardComponent,
     FooterComponent,
-    MenuPageComponent
+    MenuPageComponent,
+    AppointmentsPageComponent
   ],
   imports: [
     BrowserModule,
