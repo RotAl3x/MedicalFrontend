@@ -43,8 +43,7 @@ export class RegisterPageComponent {
     }
     try {
       await this.authService.register(this.form.value);
-      this.openSnackBar('Te-ai  înregistrat cu succes', 'OK');
-      await this.router.navigate(['/login']);
+      this.openSnackBar('Cont creat cu succes', 'OK');
     } catch (e) {
       this.openSnackBar('Există deja un cont cu acest email', 'OK');
     }

@@ -6,6 +6,6 @@ export interface IAppointment extends IEntity {
   roomOrDeviceId: string;
   applicationUserId: string;
   medicalServiceId: string;
-  phone:string;
-  diseaseId:string;
+  phone: string;
+  diseaseId: string;
 }

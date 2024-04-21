@@ -31,6 +31,7 @@ import {GoogleMapsModule} from "@angular/google-maps";
 import { FooterComponent } from './components/footer/footer.component';
 import { MenuPageComponent } from './admin/menu-page/menu-page.component';
 import { AppointmentsPageComponent } from './admin/appointments-page/appointments-page.component';
+import {FullCalendarModule} from "@fullcalendar/angular";
 
 
 @NgModule({
@@ -48,29 +49,30 @@ import { AppointmentsPageComponent } from './admin/appointments-page/appointment
     MenuPageComponent,
     AppointmentsPageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    RouterOutlet,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatSnackBarModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MatCardModule,
-    MatDialogModule,
-    MatSelectModule,
-    MatMenuModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    ButtonsModule,
-    CarouselModule,
-    GoogleMapsModule,
-    HttpClientJsonpModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        RouterOutlet,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatSnackBarModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatCardModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatMenuModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        ButtonsModule,
+        CarouselModule,
+        GoogleMapsModule,
+        HttpClientJsonpModule,
+        FullCalendarModule,
+    ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
     {provide: HTTP_INTERCEPTORS, useClass:HttpRequestInterceptorInterceptor, multi:true}

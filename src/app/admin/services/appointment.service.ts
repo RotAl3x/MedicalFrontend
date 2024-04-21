@@ -3,7 +3,6 @@ import {firstValueFrom, Observable, of, Subject} from "rxjs";
 import {HubConnection, HubConnectionBuilder, LogLevel} from "@microsoft/signalr";
 import {environment} from "../../../environment/environment";
 import {IAppointment} from "../models/appointment";
-import {IDoctor} from "../../models/doctor";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -29,8 +28,8 @@ export class AppointmentService {
     return pendingAppointmentUpdatedSubject;
   }
 
-  async getAllByRoomIdOrDoctorId(roomId: string, doctorId:string){
-    const url = this._baseUrl + `api/appointment/${roomId}/${doctorId}`;
-    return firstValueFrom(this.http.get<IAppointment[]>(url));
+   getAllByRoomIdOrDoctorId(roomId: string, doctorId:string): Observable<IAppointment[]>{
+    const url = this._baseUrl + `api/appointment/$${roomId}/$${doctorId}`;
+    return this.http.get<IAppointment[]>(url);
   }
 }
