@@ -1,8 +1,9 @@
 import {inject, Injectable} from '@angular/core';
-import {firstValueFrom, Observable, of, Subject} from "rxjs";
+import {BehaviorSubject, Observable,} from "rxjs";
 import {HubConnection, HubConnectionBuilder, LogLevel} from "@microsoft/signalr";
 import {environment} from "../../../environment/environment";
 import {IAppointment} from "../models/appointment";
+import {IDoctor} from "../../models/doctor";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -20,15 +21,15 @@ export class AppointmentService {
     return true;
   }
 
-  appointmentUpdated$(): Observable<IAppointment> {
-    let pendingAppointmentUpdatedSubject = new Subject<IAppointment>();
+  appointmentUpdated$(): Observable<IAppointment|null> {
+    let pendingAppointmentUpdatedSubject = new BehaviorSubject<IAppointment|null>(null);
     this.hubConnectionBuilder.on('SendAppointmentToUser', (result: IAppointment) => {
       pendingAppointmentUpdatedSubject.next(result);
     });
     return pendingAppointmentUpdatedSubject;
   }
 
-   getAllByRoomIdOrDoctorId(roomId: string, doctorId:string): Observable<IAppointment[]>{
+  getAllByRoomIdOrDoctorId(roomId: string, doctorId:string){
     const url = this._baseUrl + `api/appointment/$${roomId}/$${doctorId}`;
     return this.http.get<IAppointment[]>(url);
   }

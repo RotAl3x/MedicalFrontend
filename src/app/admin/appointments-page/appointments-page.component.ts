@@ -1,9 +1,9 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {AppointmentService} from "../services/appointment.service";
 import {IAppointment} from "../models/appointment";
-import {CalendarOptions, EventClickArg, EventInput} from "@fullcalendar/core";
+import {CalendarOptions, EventClickArg} from "@fullcalendar/core";
 import timeGridPlugin from '@fullcalendar/timegrid'
-import {map, Observable} from "rxjs";
+import {combineLatest, map, Observable} from "rxjs";
 import interactionPlugin from '@fullcalendar/interaction';
 
 @Component({
@@ -23,7 +23,7 @@ export class AppointmentsPageComponent implements OnInit {
       center: 'title',
       right: 'timeGridWeek,timeGridDay'
     },
-    plugins: [timeGridPlugin,interactionPlugin],
+    plugins: [timeGridPlugin, interactionPlugin],
   };
 
   handleDateClick(arg: EventClickArg) {
@@ -32,13 +32,16 @@ export class AppointmentsPageComponent implements OnInit {
   }
 
   async ngOnInit() {
-    // this.events = this.appointmentService.getAllByRoomIdOrDoctorId("9c9c9d6e-c68a-40e3-a524-0a8ebaff0590", "d73da953-2e90-49b6-b0ac-5867b8d0ed6f").pipe(
-    //   map(appointments => appointments.map(a => {return{title:'tst',...a}}))
-    // )
-
+    let getInitialAppointments = this.appointmentService.getAllByRoomIdOrDoctorId
+    ("9c9c9d6e-c68a-40e3-a524-0a8ebaff0590", "d73da953-2e90-49b6-b0ac-5867b8d0ed6f");
     await this.appointmentService.connect();
-    this.appointmentService.appointmentUpdated$().pipe(
-      map(a => {return{title:'tst',...a}})
-    );
+    this.events = combineLatest([getInitialAppointments, this.appointmentService.appointmentUpdated$()]).pipe(
+      map(([initialAppointments, newAppointment]) => {
+        if (newAppointment) initialAppointments.push(newAppointment);
+        return initialAppointments.map(a => {
+          return {...a, title: a.phone}
+        })
+      })
+    )
   }
 }
