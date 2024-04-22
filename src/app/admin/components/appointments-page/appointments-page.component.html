@@ -1,0 +1,43 @@
+<div>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Camera sau apar</mat-label>
+      <mat-select formControlName="roomOrDeviceId">
+        <mat-option *ngFor="let room of roomsOrDevices" [value]="room.id">{{room.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Doctor</mat-label>
+      <mat-select formControlName="applicationUserId">
+        <mat-option *ngFor="let doctorUser of doctorUsers" [value]="doctorUser.id">{{doctorUser.firstName}} {{doctorUser.lastName}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>De adaugat ora</div>
+    <mat-form-field>
+      <input matInput type="datetime-local" placeholder="start date">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Serviciu medical</mat-label>
+      <mat-select formControlName="medicalServiceId">
+        <mat-option *ngFor="let medicalService of medicalServices" [value]="medicalService.id">{{medicalService.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Boală</mat-label>
+      <mat-select formControlName="diseaseId">
+        <mat-option *ngFor="let disease of diseases" [value]="disease.id">{{disease.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-2">
+      <input formControlName="phone" matInput placeholder="Numărul de telefon*">
+      <mat-error *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['required']">
+        Obligatoriu
+      </mat-error>
+      <mat-error *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['notMatch'] && !form.controls['phone'].errors?.['required']">
+        Numărul de telefon incorect
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<full-calendar [options]="calendarOptions"  [events]="events | async"></full-calendar>

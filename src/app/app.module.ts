@@ -14,7 +14,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatCardModule} from "@angular/material/card";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSelectModule} from "@angular/material/select";
-import { RegisterPageComponent } from './admin/register-page/register-page.component';
+import { RegisterPageComponent } from './admin/components/register-page/register-page.component';
 import { MenuComponent } from './components/menu/menu.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
@@ -29,8 +29,8 @@ import {ButtonsModule} from "ngx-bootstrap/buttons";
 import { MedicalCardComponent } from './components/medical-card/medical-card.component';
 import {GoogleMapsModule} from "@angular/google-maps";
 import { FooterComponent } from './components/footer/footer.component';
-import { MenuPageComponent } from './admin/menu-page/menu-page.component';
-import { AppointmentsPageComponent } from './admin/appointments-page/appointments-page.component';
+import { MenuPageComponent } from './admin/components/menu-page/menu-page.component';
+import { AppointmentsPageComponent } from './admin/components/appointments-page/appointments-page.component';
 import {FullCalendarModule} from "@fullcalendar/angular";
 
 
