@@ -32,6 +32,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MenuPageComponent } from './admin/components/menu-page/menu-page.component';
 import { AppointmentsPageComponent } from './admin/components/appointments-page/appointments-page.component';
 import {FullCalendarModule} from "@fullcalendar/angular";
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from "@angular-material-components/datetime-picker";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { DialogAppointmentComponent } from './admin/components/dialog-appointment/dialog-appointment.component';
 
 
 @NgModule({
@@ -47,32 +54,37 @@ import {FullCalendarModule} from "@fullcalendar/angular";
     MedicalCardComponent,
     FooterComponent,
     MenuPageComponent,
-    AppointmentsPageComponent
+    AppointmentsPageComponent,
+    DialogAppointmentComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        RouterOutlet,
-        MatFormFieldModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatInputModule,
-        MatSnackBarModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        MatCardModule,
-        MatDialogModule,
-        MatSelectModule,
-        MatMenuModule,
-        MatIconModule,
-        MatProgressSpinnerModule,
-        ButtonsModule,
-        CarouselModule,
-        GoogleMapsModule,
-        HttpClientJsonpModule,
-        FullCalendarModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    RouterOutlet,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatCardModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatMenuModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    ButtonsModule,
+    CarouselModule,
+    GoogleMapsModule,
+    HttpClientJsonpModule,
+    FullCalendarModule,
+    NgxMatDatetimePickerModule,
+    MatDatepickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule
+  ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
     {provide: HTTP_INTERCEPTORS, useClass:HttpRequestInterceptorInterceptor, multi:true}
