@@ -56,8 +56,8 @@ export class AppointmentsPageComponent implements OnInit {
   }
 
   public form = this.formBuilder.group({
-    roomOrDeviceId: ['', [Validators.required]],
-    applicationUserId: ['', [Validators.required]],
+    roomOrDeviceId: [null, [Validators.required]],
+    applicationUserId: [null, [Validators.required]],
     start: [new Date(), [Validators.required]],
     end: [new Date()],
     medicalServiceId: ['', [Validators.required]],
@@ -78,24 +78,30 @@ export class AppointmentsPageComponent implements OnInit {
     this.medicalServices = await this.medicalServiceService.getAll();
     this.diseases = await this.diseaseService.getAll();
     this.doctorUsers = await this.authService.getUsersByRole("Doctor");
-    let getInitialAppointments = this.appointmentService.getAllByRoomIdOrDoctorId
-    ("9c9c9d6e-c68a-40e3-a524-0a8ebaff0590", "d73da953-2e90-49b6-b0ac-5867b8d0ed6f");
     await this.appointmentService.connect();
-    this.events = combineLatest([getInitialAppointments, this.appointmentService.appointmentUpdated$()]).pipe(
-      map(([initialAppointments, newAppointment]) => {
-        if (newAppointment) {
-          if (newAppointment.isDeleted) {
-            let indexDeleted = initialAppointments.findIndex(a => a.id == newAppointment.id)
-            initialAppointments.splice(indexDeleted, 1)
-          } else {
-            initialAppointments.push(newAppointment);
-          }
-        }
-        return initialAppointments.map(a => {
-          return {...a, title: a.phone, color: this.mapColorToEvent(a)}
-        })
-      })
-    )
+    this.form.valueChanges.subscribe(async value => {
+      if (value.applicationUserId || value.roomOrDeviceId) {
+        let getInitialAppointments = this.appointmentService.getAllByRoomIdOrDoctorId
+        (value.roomOrDeviceId ?? '', value.applicationUserId ?? '');
+        this.events = combineLatest([getInitialAppointments, this.appointmentService.appointmentUpdated$()]).pipe(
+          map(([initialAppointments, newAppointment]) => {
+            if (newAppointment) {
+              if (newAppointment.isDeleted) {
+                let indexDeleted = initialAppointments.findIndex(a => a.id == newAppointment.id)
+                initialAppointments.splice(indexDeleted, 1)
+              } else {
+                if(newAppointment.roomOrDeviceId == this.form.controls.roomOrDeviceId.value
+                  || newAppointment.applicationUserId == this.form.controls.applicationUserId.value)
+                initialAppointments.push(newAppointment);
+              }
+            }
+            return initialAppointments.map(a => {
+              return {...a, title: a.phone, color: this.mapColorToEvent(a)}
+            })
+          })
+        )
+      }
+    })
   }
 
   mapColorToEvent(appointment: IAppointment) {

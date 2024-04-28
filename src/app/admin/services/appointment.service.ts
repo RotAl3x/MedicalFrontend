@@ -32,7 +32,8 @@ export class AppointmentService {
   }
 
   getAllByRoomIdOrDoctorId(roomId: string, doctorId:string){
-    const url = this._baseUrl + `api/appointment/${roomId}/${doctorId}`;
+    const searchUrl = roomId && doctorId ? `${roomId}/${doctorId}` : roomId ? `roomId/${roomId}` : `doctorId/${doctorId}`
+    const url = this._baseUrl + `api/appointment/${searchUrl}`;
     return this.http.get<IAppointment[]>(url);
   }
 
@@ -44,7 +45,6 @@ export class AppointmentService {
 
   async deleteAppointment(id:string){
     const url = this._baseUrl + `api/appointment/${id}`;
-    const options = await this.authService.getOptions(true);
-    return await firstValueFrom(this.http.delete<string>(url, options));
+    return await firstValueFrom(this.http.delete<string>(url));
   }
 }

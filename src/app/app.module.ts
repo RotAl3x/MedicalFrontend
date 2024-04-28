@@ -87,7 +87,7 @@ import { DialogAppointmentComponent } from './admin/components/dialog-appointmen
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
-    {provide: HTTP_INTERCEPTORS, useClass:HttpRequestInterceptorInterceptor, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass:HttpRequestInterceptorInterceptor, multi:true},
   ],
   bootstrap: [AppComponent]
 })
