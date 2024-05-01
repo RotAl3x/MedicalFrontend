@@ -39,6 +39,7 @@ import {
 } from "@angular-material-components/datetime-picker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { DialogAppointmentComponent } from './admin/components/dialog-appointment/dialog-appointment.component';
+import {MAT_DATE_LOCALE} from "@angular/material/core";
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { DialogAppointmentComponent } from './admin/components/dialog-appointmen
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
     {provide: HTTP_INTERCEPTORS, useClass:HttpRequestInterceptorInterceptor, multi:true},
+    { provide: MAT_DATE_LOCALE, useValue: 'ro-Ro' }
   ],
   bootstrap: [AppComponent]
 })

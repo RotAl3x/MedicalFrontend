@@ -58,7 +58,7 @@ export class AppointmentsPageComponent implements OnInit {
   public form = this.formBuilder.group({
     roomOrDeviceId: [null, [Validators.required]],
     applicationUserId: [null, [Validators.required]],
-    start: [new Date(), [Validators.required]],
+    start: [new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()), [Validators.required]],
     end: [new Date()],
     medicalServiceId: ['', [Validators.required]],
     phone: ['', [Validators.required, this.phoneNumber()]],
@@ -67,7 +67,6 @@ export class AppointmentsPageComponent implements OnInit {
   })
 
   handleDateClick(arg: EventClickArg) {
-    console.log(arg.event)
     this.dialog.open(DialogAppointmentComponent, {
       data: arg.event,
     });
@@ -130,7 +129,7 @@ export class AppointmentsPageComponent implements OnInit {
     this.snack.open(message, action);
   }
 
-  async submit(e: Event) {
+  async submit() {
     this.form.markAllAsTouched();
     if (!this.form.valid) {
       this.openSnackBar('Verifică formularul', 'OK');
@@ -138,7 +137,7 @@ export class AppointmentsPageComponent implements OnInit {
     }
     try {
       let minutesToAdd = this.medicalServices.find(m => m.id == this.form.controls['medicalServiceId'].value)?.duration;
-      let end = this.form.controls.start.value;
+      let end = new Date(this.form.controls.start.value ?? 0);
       end?.setMinutes(end?.getMinutes() + (minutesToAdd ?? 0));
       this.form.controls['end'].setValue(end);
       await this.appointmentService.addAppointment(this.form.value);
