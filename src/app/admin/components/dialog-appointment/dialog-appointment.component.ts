@@ -4,9 +4,6 @@ import {EventDef, EventImpl} from "@fullcalendar/core/internal";
 import {AppointmentService} from "../../services/appointment.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
-class DialogOverviewExampleDialog {
-}
-
 @Component({
   selector: 'app-dialog-appointment',
   templateUrl: './dialog-appointment.component.html',
@@ -17,7 +14,7 @@ export class DialogAppointmentComponent {
   private snack = inject(MatSnackBar);
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    public dialogRef: MatDialogRef<DialogAppointmentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: EventImpl,
     private appointmentService:AppointmentService
   ) {

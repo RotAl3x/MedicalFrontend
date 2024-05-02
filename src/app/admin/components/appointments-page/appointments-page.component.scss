@@ -5,3 +5,30 @@ full-calendar{
 mat-form-field{
   margin:  10px;
 }
+
+.square{
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.free-day-background-color{
+  background-color: #FF0000;
+}
+
+.doctor-free-day-background-color{
+  background-color: #FF66B2;
+}
+
+.doctor-and-room-occupied-background-color{
+  background-color: #00FF00;
+}
+
+.room-occupied-background-color{
+  background-color: #0000FF;
+}
+
+.doctor-occupied-background-color{
+  background-color: #FF8000;
+}

@@ -8,4 +8,6 @@ export interface IAppointment extends IEntity {
   medicalServiceId: string | null;
   phone: string | null;
   diseaseId: string | null;
+  isFree: boolean | null;
+  isDoctorFree: boolean | null;
 }

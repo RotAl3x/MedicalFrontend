@@ -31,9 +31,6 @@
     </mat-form-field>
     <mat-form-field appearance="outline" class="mb-2">
       <input formControlName="phone" matInput placeholder="Numărul de telefon*">
-      <mat-error *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['required']">
-        Obligatoriu
-      </mat-error>
       <mat-error *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['notMatch'] && !form.controls['phone'].errors?.['required']">
         Numărul de telefon incorect
       </mat-error>
@@ -42,4 +39,34 @@
   </form>
 </div>
 
-<full-calendar class="m-2" [options]="calendarOptions"  [events]="events | async"></full-calendar>
+<full-calendar class="m-2 mx-3" [options]="calendarOptions"  [events]="events | async"></full-calendar>
+
+<div class="mx-3 mt-1 mb-5">
+  <h2><b>Legendă:</b></h2>
+  <div class="d-flex justify-content-between align-items-center mx-2">
+    <div class="d-flex align-items-center">
+      Cabinet liber:
+      <div class="square free-day-background-color"></div>
+    </div>
+
+    <div class="d-flex align-items-center">
+      Doctor liber:
+      <div class="square doctor-free-day-background-color"></div>
+    </div>
+
+    <div class="d-flex align-items-center">
+      Doctor si cameră ocupate:
+      <div class="square doctor-and-room-occupied-background-color"></div>
+    </div>
+
+    <div class="d-flex align-items-center">
+      Doctor ocupat:
+      <div class="square doctor-occupied-background-color"></div>
+    </div>
+
+    <div class="d-flex align-items-center">
+      Cameră/Aparat ocupată:
+      <div class="square room-occupied-background-color"></div>
+    </div>
+  </div>
+</div>
