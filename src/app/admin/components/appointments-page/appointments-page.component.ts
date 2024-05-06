@@ -79,19 +79,19 @@ export class AppointmentsPageComponent implements OnInit {
     // @ts-ignore
     this.form.controls.start.setValue('');
     this.roomsOrDevices = await this.roomOrDeviceService.getAll();
-    let emptyRoomOrDevice: IRoomOrDevice={
-      name:'',
-      id:'',
-      isDeleted:false,
+    let emptyRoomOrDevice: IRoomOrDevice = {
+      name: '',
+      id: '',
+      isDeleted: false,
     };
     this.roomsOrDevices.push(emptyRoomOrDevice);
     this.medicalServices = await this.medicalServiceService.getAll();
     this.diseases = await this.diseaseService.getAll();
     this.doctorUsers = await this.authService.getUsersByRole("Doctor");
-    let emptyDoctorUser: IUser={
-      id:'',
-      firstName:'',
-      lastName:'',
+    let emptyDoctorUser: IUser = {
+      id: '',
+      firstName: '',
+      lastName: '',
     }
     this.doctorUsers.push(emptyDoctorUser);
     await this.appointmentService.connect();
@@ -186,6 +186,11 @@ export class AppointmentsPageComponent implements OnInit {
     let end = new Date(this.form.controls.start.value ?? 0);
     end?.setMinutes(end?.getMinutes() + (minutesToAdd ?? 0));
     this.form.controls['end'].setValue(end);
+
+    if (!this.form.controls['phone'].value?.includes("+")) {
+      let phoneRomanianSuffix = "+4" + this.form.controls['phone'].value
+      this.form.controls['phone'].setValue(phoneRomanianSuffix);
+    }
     if (await this.isNewAppointmentOverlapAnOlderAppointment(this.form.value)) {
       const dialogRef = this.dialog.open(DialogAppointmentOverlapComponent);
       dialogRef.afterClosed().subscribe(async result => {
