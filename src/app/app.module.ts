@@ -14,7 +14,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatCardModule} from "@angular/material/card";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSelectModule} from "@angular/material/select";
-import { RegisterPageComponent } from './admin/register-page/register-page.component';
+import { RegisterPageComponent } from './admin/components/register-page/register-page.component';
 import { MenuComponent } from './components/menu/menu.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
@@ -29,8 +29,19 @@ import {ButtonsModule} from "ngx-bootstrap/buttons";
 import { MedicalCardComponent } from './components/medical-card/medical-card.component';
 import {GoogleMapsModule} from "@angular/google-maps";
 import { FooterComponent } from './components/footer/footer.component';
-import { MenuPageComponent } from './admin/menu-page/menu-page.component';
-import { AppointmentsPageComponent } from './admin/appointments-page/appointments-page.component';
+import { MenuPageComponent } from './admin/components/menu-page/menu-page.component';
+import { AppointmentsPageComponent } from './admin/components/appointments-page/appointments-page.component';
+import {FullCalendarModule} from "@fullcalendar/angular";
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from "@angular-material-components/datetime-picker";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { DialogAppointmentComponent } from './admin/components/dialog-appointment/dialog-appointment.component';
+import {MAT_DATE_LOCALE} from "@angular/material/core";
+import { DialogAppointmentOverlapComponent } from './admin/components/dialog-appointment-overlap/dialog-appointment-overlap.component';
+import { DeleteAppointmentPageComponent } from './components/delete-appointment-page/delete-appointment-page.component';
 
 
 @NgModule({
@@ -46,7 +57,10 @@ import { AppointmentsPageComponent } from './admin/appointments-page/appointment
     MedicalCardComponent,
     FooterComponent,
     MenuPageComponent,
-    AppointmentsPageComponent
+    AppointmentsPageComponent,
+    DialogAppointmentComponent,
+    DialogAppointmentOverlapComponent,
+    DeleteAppointmentPageComponent
   ],
   imports: [
     BrowserModule,
@@ -70,10 +84,16 @@ import { AppointmentsPageComponent } from './admin/appointments-page/appointment
     CarouselModule,
     GoogleMapsModule,
     HttpClientJsonpModule,
+    FullCalendarModule,
+    NgxMatDatetimePickerModule,
+    MatDatepickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
-    {provide: HTTP_INTERCEPTORS, useClass:HttpRequestInterceptorInterceptor, multi:true}
+    {provide: HTTP_INTERCEPTORS, useClass:HttpRequestInterceptorInterceptor, multi:true},
+    { provide: MAT_DATE_LOCALE, useValue: 'ro-Ro' }
   ],
   bootstrap: [AppComponent]
 })

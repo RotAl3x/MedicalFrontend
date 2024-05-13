@@ -1,11 +1,13 @@
 import {IEntity} from "../../models/entity";
 
 export interface IAppointment extends IEntity {
-  start: Date;
-  end: Date;
-  roomOrDeviceId: string;
-  applicationUserId: string;
-  medicalServiceId: string;
-  phone:string;
-  diseaseId:string;
+  start: Date | null;
+  end: Date | null;
+  roomOrDeviceId: string | null;
+  applicationUserId: string | null;
+  medicalServiceId: string | null;
+  phone: string | null;
+  diseaseId: string | null;
+  isFree: boolean | null;
+  isDoctorFree: boolean | null;
 }

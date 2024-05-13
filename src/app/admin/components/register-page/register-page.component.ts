@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {error} from "@angular/compiler-cli/src/transformers/util";
@@ -43,8 +43,7 @@ export class RegisterPageComponent {
     }
     try {
       await this.authService.register(this.form.value);
-      this.openSnackBar('Te-ai  înregistrat cu succes', 'OK');
-      await this.router.navigate(['/login']);
+      this.openSnackBar('Cont creat cu succes', 'OK');
     } catch (e) {
       this.openSnackBar('Există deja un cont cu acest email', 'OK');
     }

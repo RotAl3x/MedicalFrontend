@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>{{ eventDef.extendedProps['phone'] }}</h2>
+<mat-dialog-content>
+  <h3>Camera/aparat: {{ eventDef.extendedProps['roomOrDevice'].name }}</h3>
+  <h3>Doctor: {{ eventDef.extendedProps['applicationUser'].lastName }}</h3>
+  <h3>Început: {{ data._instance?.range?.start| date:'dd/MM/yy, HH:mm' }}</h3>
+  <h3>Sfârșit: {{ data._instance?.range?.end| date:'dd/MM/yy, HH:mm' }}</h3>
+  <h3>Serviciu: {{ data.extendedProps['medicalService'].name }}</h3>
+  <h3>Boală: {{ data.extendedProps['disease'].name }}</h3>
+  <button mat-raised-button color="warn" (click)="onDelete()">Șterge</button>
+</mat-dialog-content>
+
+
+

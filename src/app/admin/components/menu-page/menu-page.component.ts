@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IMenuPage} from "../models/menu-page";
+import {IMenuPage} from "../../models/menu-page";
 
 @Component({
   selector: 'app-menu-page',
