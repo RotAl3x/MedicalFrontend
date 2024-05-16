@@ -61,6 +61,7 @@ export class AppointmentsPageComponent implements OnInit {
     applicationUserId: [null],
     start: [new Date(), [Validators.required]],
     end: [new Date()],
+    startDateForMessage: [new Date()],
     medicalServiceId: ['', [Validators.required]],
     phone: ['', [Validators.required, this.phoneNumber()]],
     diseaseId: ['', [Validators.required]],
@@ -186,6 +187,8 @@ export class AppointmentsPageComponent implements OnInit {
     let end = new Date(this.form.controls.start.value ?? 0);
     end?.setMinutes(end?.getMinutes() + (minutesToAdd ?? 0));
     this.form.controls['end'].setValue(end);
+    var getOffset = this.form.controls.start.value?.getTimezoneOffset() ?? 0;
+    this.form.controls['startDateForMessage'].setValue(new Date((this.form.controls.start.value?.getTime() ?? 0) - getOffset * 60 * 1000));
 
     if (!this.form.controls['phone'].value?.includes("+")) {
       let phoneRomanianSuffix = "+4" + this.form.controls['phone'].value
