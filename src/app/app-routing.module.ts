@@ -13,6 +13,7 @@ import {
   TestimonialUpsertPageComponent
 } from "./admin/components/testimonial-upsert-page/testimonial-upsert-page.component";
 import {DoctorUpsertPageComponent} from "./admin/components/doctor-upsert-page/doctor-upsert-page.component";
+import {PriceUpsertPageComponent} from "./admin/components/price-upsert-page/price-upsert-page.component";
 
 const routes: Routes = [
   {path: 'prices', component: PricesPageComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'admin/appointments', component:AppointmentsPageComponent, canActivate:[loginGuard]},
   {path:'admin/testimonials', component:TestimonialUpsertPageComponent, canActivate:[loginGuard]},
   {path:'admin/doctors', component:DoctorUpsertPageComponent, canActivate:[loginGuard]},
+  {path:'admin/prices', component:PriceUpsertPageComponent, canActivate:[loginGuard]},
   {path: '**', redirectTo: '/home', pathMatch: 'full'},
 
 ];

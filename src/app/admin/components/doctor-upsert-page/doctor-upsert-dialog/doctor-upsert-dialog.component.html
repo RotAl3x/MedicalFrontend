@@ -29,7 +29,7 @@
     <div mat-dialog-actions class="d-flex justify-content-between">
       <button mat-button mat-dialog-close>Close</button>
       <div>
-        <button mat-raised-button color="warn" *ngIf="form.controls.photoName.value" (click)="onDelete()">Șterge</button>
+        <button mat-raised-button color="warn" *ngIf="data != null" (click)="onDelete()">Șterge</button>
         <button mat-raised-button color="primary" (click)="onSave(data != null)">{{ data ? 'Modifică' : 'Adaugă' }}</button>
       </div>
     </div>

@@ -18,7 +18,8 @@ export class MenuPageComponent {
     title: 'Website',
     menu: [
       {name: 'Testimoniale', route: 'testimonials'},
-      {name: 'Doctori', route: 'doctors'}]
+      {name: 'Doctori', route: 'doctors'},
+      {name: 'Oferte', route: 'prices'}]
   }];
 
 }

@@ -19,4 +19,22 @@ export class PriceService {
     const url = this._baseUrl + 'api/price/getAll'
     return await firstValueFrom(this.http.get<IPrice[]>(url));
   }
+
+  public async create(data: Partial<IPrice>){
+    const url = this._baseUrl + 'api/price';
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.post<IPrice>(url, data, options));
+  }
+
+  public async update(data: Partial<IPrice>): Promise<IPrice> {
+    const url = this._baseUrl + 'api/price';
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.put<IPrice>(url, data, options));
+  }
+
+  public async delete(data: string | null): Promise<string> {
+    const url = this._baseUrl + 'api/price/' + data;
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.delete<string>(url, options));
+  }
 }

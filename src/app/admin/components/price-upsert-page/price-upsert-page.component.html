@@ -1,0 +1,9 @@
+<div class="d-flex flex-column align-items-center cursor-pointer">
+  <h2 class="m-2">Oferte</h2>
+  <button mat-raised-button class="m-2" (click)="openDialog()">Adaugă</button>
+  <div *ngFor="let price of prices" class="w-25 m-2">
+    <mat-card class="p-3" (click)="openDialog(price)">
+      <mat-card-title>Ofertă: {{price.name}}</mat-card-title>
+    </mat-card>
+  </div>
+</div>

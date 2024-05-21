@@ -46,6 +46,8 @@ import { TestimonialUpsertPageComponent } from './admin/components/testimonial-u
 import { TestimonialUpsertDialogComponent } from './admin/components/testimonial-upsert-page/testimonial-upsert-dialog/testimonial-upsert-dialog.component';
 import { DoctorUpsertPageComponent } from './admin/components/doctor-upsert-page/doctor-upsert-page.component';
 import { DoctorUpsertDialogComponent } from './admin/components/doctor-upsert-page/doctor-upsert-dialog/doctor-upsert-dialog.component';
+import { PriceUpsertPageComponent } from './admin/components/price-upsert-page/price-upsert-page.component';
+import { PriceUpsertDialogComponent } from './admin/components/price-upsert-page/price-upsert-dialog/price-upsert-dialog.component';
 
 
 @NgModule({
@@ -68,7 +70,9 @@ import { DoctorUpsertDialogComponent } from './admin/components/doctor-upsert-pa
     TestimonialUpsertPageComponent,
     TestimonialUpsertDialogComponent,
     DoctorUpsertPageComponent,
-    DoctorUpsertDialogComponent
+    DoctorUpsertDialogComponent,
+    PriceUpsertPageComponent,
+    PriceUpsertDialogComponent
   ],
   imports: [
     BrowserModule,
