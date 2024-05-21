@@ -42,6 +42,8 @@ import { DialogAppointmentComponent } from './admin/components/dialog-appointmen
 import {MAT_DATE_LOCALE} from "@angular/material/core";
 import { DialogAppointmentOverlapComponent } from './admin/components/dialog-appointment-overlap/dialog-appointment-overlap.component';
 import { DeleteAppointmentPageComponent } from './components/delete-appointment-page/delete-appointment-page.component';
+import { TestimonialUpsertPageComponent } from './admin/components/testimonial-upsert-page/testimonial-upsert-page.component';
+import { TestimonialUpsertDialogComponent } from './admin/components/testimonial-upsert-page/testimonial-upsert-dialog/testimonial-upsert-dialog.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { DeleteAppointmentPageComponent } from './components/delete-appointment-
     AppointmentsPageComponent,
     DialogAppointmentComponent,
     DialogAppointmentOverlapComponent,
-    DeleteAppointmentPageComponent
+    DeleteAppointmentPageComponent,
+    TestimonialUpsertPageComponent,
+    TestimonialUpsertDialogComponent
   ],
   imports: [
     BrowserModule,

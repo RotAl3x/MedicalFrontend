@@ -11,7 +11,7 @@ import {IMedicalService} from "../../models/medical-service";
 import {IDisease} from "../../models/disease";
 import {IUser} from "../../../models/login";
 import {RoomOrDeviceService} from "../../services/room-or-device.service";
-import {MedicalServiceService} from "../../services/medical-service.service";
+import {MedicalService} from "../../services/medical.service";
 import {DiseaseService} from "../../services/disease.service";
 import {AuthService} from "../../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -30,7 +30,7 @@ export class AppointmentsPageComponent implements OnInit {
   private appointmentService = inject(AppointmentService);
   private formBuilder = inject(FormBuilder);
   private roomOrDeviceService = inject(RoomOrDeviceService);
-  private medicalServiceService = inject(MedicalServiceService);
+  private medicalServiceService = inject(MedicalService);
   private diseaseService = inject(DiseaseService);
   private authService = inject(AuthService);
   private snack = inject(MatSnackBar);

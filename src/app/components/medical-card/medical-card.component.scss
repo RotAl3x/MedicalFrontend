@@ -1,10 +1,5 @@
 @use "../../../assets/variables.scss";
 
-img{
-  width: 150px;
-  height: 150px;
-}
-
 .border-card{
   border: solid variables.$primary-color;
   min-width: 250px !important;

@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{ data ? 'Modifică' : 'Adaugă' }}</h2>
+<mat-dialog-content class="test">
+  <form [formGroup]="form" class="d-flex flex-column justify-content-center">
+    <mat-form-field appearance="outline" class="mb-2">
+      <input formControlName="name" matInput placeholder="Nume" required>
+      <mat-error *ngIf="form.controls.name.touched && form.controls.name.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-2 textarea-container">
+      <textarea formControlName="description" matInput placeholder="Descriere" cdkTextareaAutosize required></textarea>
+      <mat-error *ngIf="form.controls.description.touched && form.controls.description.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <div class="d-flex m-2 ms-0">
+      <div *ngIf="form.controls.photoName.value" class="d-flex align-items-center justify-content-center ms-3">
+        <img class="rounded img-website" [src]="photoService.photoLink(form.controls.photoName.value)"
+             [alt]="form.controls.photoName.value">
+      </div>
+      <div class="d-flex align-items-center justify-content-center mx-3">
+        <input (change)="saveFile($event)" type="file" #fileUpload class="d-none">
+        <button (click)="fileUpload.click()" mat-raised-button>{{form.controls.photoName.value?'Schimbă':'Adaugă'}} poză</button>
+      </div>
+    </div>
+    <mat-error *ngIf="form.controls.photoName.touched && form.controls.photoName.errors?.['required']">
+      Obligatoriu
+    </mat-error>
+    <div mat-dialog-actions class="d-flex justify-content-between">
+      <button mat-button mat-dialog-close>Close</button>
+      <div>
+        <button mat-raised-button color="warn" *ngIf="form.controls.photoName.value" (click)="onDelete()">Șterge</button>
+        <button mat-raised-button color="primary" (click)="onSave(data != null)">{{ data ? 'Modifică' : 'Adaugă' }}</button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>

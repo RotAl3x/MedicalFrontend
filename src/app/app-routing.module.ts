@@ -9,6 +9,9 @@ import {MenuPageComponent} from "./admin/components/menu-page/menu-page.componen
 import {loginGuard} from "./admin/guards/login.guard";
 import {AppointmentsPageComponent} from "./admin/components/appointments-page/appointments-page.component";
 import {DeleteAppointmentPageComponent} from "./components/delete-appointment-page/delete-appointment-page.component";
+import {
+  TestimonialUpsertPageComponent
+} from "./admin/components/testimonial-upsert-page/testimonial-upsert-page.component";
 
 const routes: Routes = [
   {path: 'prices', component: PricesPageComponent},
@@ -19,6 +22,7 @@ const routes: Routes = [
   {path: 'admin/register', component: RegisterPageComponent, canActivate:[loginGuard]},
   {path:'admin/home', component:MenuPageComponent, canActivate:[loginGuard]},
   {path:'admin/appointments', component:AppointmentsPageComponent, canActivate:[loginGuard]},
+  {path:'admin/testimonials', component:TestimonialUpsertPageComponent, canActivate:[loginGuard]},
   {path: '**', redirectTo: '/home', pathMatch: 'full'},
 
 ];

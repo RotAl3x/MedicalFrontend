@@ -9,7 +9,7 @@ import {IMedicalService} from "../models/medical-service";
 @Injectable({
   providedIn: 'root'
 })
-export class MedicalServiceService {
+export class MedicalService {
   private readonly _baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient,
