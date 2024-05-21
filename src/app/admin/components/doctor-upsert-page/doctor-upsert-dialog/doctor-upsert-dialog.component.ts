@@ -1,19 +1,19 @@
 import {Component, Inject, inject, OnInit} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TestimonialPersonService} from "../../../../services/testimonial-person.service";
-import {ITestimonialPerson} from "../../../../models/testimonial-person";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {PhotoService} from "../../../services/photo.service";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {DoctorService} from "../../../../services/doctor.service";
+import {IDoctor} from "../../../../models/doctor";
 
 @Component({
-  selector: 'app-testimonial-upsert-dialog',
-  templateUrl: './testimonial-upsert-dialog.component.html',
-  styleUrls: ['./testimonial-upsert-dialog.component.scss']
+  selector: 'app-doctor-upsert-dialog',
+  templateUrl: './doctor-upsert-dialog.component.html',
+  styleUrls: ['./doctor-upsert-dialog.component.scss']
 })
-export class TestimonialUpsertDialogComponent implements OnInit {
+export class DoctorUpsertDialogComponent implements OnInit{
   private snack = inject(MatSnackBar);
-  private testimonialPersonService = inject(TestimonialPersonService);
+  private doctorService = inject(DoctorService);
   private formBuilder = inject(FormBuilder);
   public photoService = inject(PhotoService);
   public form = this.formBuilder.group({
@@ -25,8 +25,8 @@ export class TestimonialUpsertDialogComponent implements OnInit {
   })
 
   constructor(
-    public dialogRef: MatDialogRef<TestimonialUpsertDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ITestimonialPerson | null,
+    public dialogRef: MatDialogRef<DoctorUpsertDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: IDoctor | null,
   ) {
   }
 
@@ -55,8 +55,8 @@ export class TestimonialUpsertDialogComponent implements OnInit {
       return;
     }
     try {
-      await this.testimonialPersonService.delete(this.form.controls.id.value);
-      this.openSnackBar('Testimonial șters', 'OK');
+      await this.doctorService.delete(this.form.controls.id.value);
+      this.openSnackBar('Doctor șters', 'OK');
     } catch (e) {
       this.openSnackBar('Eroare', 'OK');
     }
@@ -71,9 +71,9 @@ export class TestimonialUpsertDialogComponent implements OnInit {
     }
     try {
       modified ?
-        await this.testimonialPersonService.update(this.form.value) :
-        await this.testimonialPersonService.create(this.form.value);
-      this.openSnackBar(`Testimonial ${modified ? 'modificat' : 'adaugăt'}`, 'OK');
+        await this.doctorService.update(this.form.value) :
+        await this.doctorService.create(this.form.value);
+      this.openSnackBar(`Doctor ${modified ? 'modificat' : 'adaugăt'}`, 'OK');
     } catch (e) {
       this.openSnackBar('Eroare', 'OK');
     }

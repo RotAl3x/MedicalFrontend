@@ -44,6 +44,8 @@ import { DialogAppointmentOverlapComponent } from './admin/components/dialog-app
 import { DeleteAppointmentPageComponent } from './components/delete-appointment-page/delete-appointment-page.component';
 import { TestimonialUpsertPageComponent } from './admin/components/testimonial-upsert-page/testimonial-upsert-page.component';
 import { TestimonialUpsertDialogComponent } from './admin/components/testimonial-upsert-page/testimonial-upsert-dialog/testimonial-upsert-dialog.component';
+import { DoctorUpsertPageComponent } from './admin/components/doctor-upsert-page/doctor-upsert-page.component';
+import { DoctorUpsertDialogComponent } from './admin/components/doctor-upsert-page/doctor-upsert-dialog/doctor-upsert-dialog.component';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { TestimonialUpsertDialogComponent } from './admin/components/testimonial
     DialogAppointmentOverlapComponent,
     DeleteAppointmentPageComponent,
     TestimonialUpsertPageComponent,
-    TestimonialUpsertDialogComponent
+    TestimonialUpsertDialogComponent,
+    DoctorUpsertPageComponent,
+    DoctorUpsertDialogComponent
   ],
   imports: [
     BrowserModule,

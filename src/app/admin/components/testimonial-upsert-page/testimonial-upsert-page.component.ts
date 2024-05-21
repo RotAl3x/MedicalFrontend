@@ -16,7 +16,7 @@ export class TestimonialUpsertPageComponent implements OnInit{
   private dialog = inject(MatDialog);
 
   async ngOnInit() {
-    await  this.getAllTestimonialPerson();
+    await this.getAllTestimonialPerson();
   }
 
   async getAllTestimonialPerson(){

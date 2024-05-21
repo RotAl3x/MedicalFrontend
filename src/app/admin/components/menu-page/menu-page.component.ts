@@ -11,10 +11,14 @@ export class MenuPageComponent {
   menuSections: IMenuPage[] = [{
     title: 'Programări',
     menu: [{name: 'Adaugă', route: 'appointments'}]
-  }, {title: 'Doctori',
-    menu: [{name: 'Adaugă', route: 'register'}]}, {
+  }, {
+    title: 'Doctori',
+    menu: [{name: 'Adaugă', route: 'register'}]
+  }, {
     title: 'Website',
-    menu: [{name:'Testimoniale', route: 'testimonials'}]
+    menu: [
+      {name: 'Testimoniale', route: 'testimonials'},
+      {name: 'Doctori', route: 'doctors'}]
   }];
 
 }
