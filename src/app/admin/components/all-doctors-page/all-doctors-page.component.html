@@ -1,0 +1,8 @@
+<div class="d-flex flex-column align-items-center cursor-pointer">
+  <h2 class="m-2">Doctori</h2>
+  <div *ngFor="let doctor of doctorUsers" class="w-25 m-2">
+    <mat-card class="p-3">
+      <mat-card-title>Doctori: {{doctor.firstName}} {{doctor.lastName}}</mat-card-title>
+    </mat-card>
+  </div>
+</div>

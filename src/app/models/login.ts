@@ -19,6 +19,12 @@ export interface IRegister {
   password: string|null,
 }
 
+export interface IChangePassword {
+  currentPassword: string | null,
+  newPassword: string | null,
+  repeatPassword: string | null,
+}
+
 export interface IUser {
   id: string;
   firstName: string;

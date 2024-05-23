@@ -54,6 +54,8 @@ import { MedicalServiceUpsertPageComponent } from './admin/components/medical-se
 import { MedicalServiceUpsertDialogComponent } from './admin/components/medical-service-upsert-page/medical-service-upsert-dialog/medical-service-upsert-dialog.component';
 import { DiseaseUpsertPageComponent } from './admin/components/disease-upsert-page/disease-upsert-page.component';
 import { DiseaseUpsertDialogComponent } from './admin/components/disease-upsert-page/disease-upsert-dialog/disease-upsert-dialog.component';
+import { AllDoctorsPageComponent } from './admin/components/all-doctors-page/all-doctors-page.component';
+import { ChangePasswordPageComponent } from './admin/components/change-password-page/change-password-page.component';
 
 
 @NgModule({
@@ -84,7 +86,9 @@ import { DiseaseUpsertDialogComponent } from './admin/components/disease-upsert-
     MedicalServiceUpsertPageComponent,
     MedicalServiceUpsertDialogComponent,
     DiseaseUpsertPageComponent,
-    DiseaseUpsertDialogComponent
+    DiseaseUpsertDialogComponent,
+    AllDoctorsPageComponent,
+    ChangePasswordPageComponent
   ],
   imports: [
     BrowserModule,

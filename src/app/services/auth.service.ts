@@ -3,7 +3,7 @@ import {environment} from "../../environment/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {LocalStorage} from "@ngx-pwa/local-storage";
-import {IAuthSession, ILogin, IRegister, IUser} from "../models/login";
+import {IAuthSession, IChangePassword, ILogin, IRegister, IUser} from "../models/login";
 import {firstValueFrom, map, tap} from "rxjs";
 
 @Injectable({
@@ -38,6 +38,12 @@ export class AuthService {
     const url = this._baseUrl + 'api/auth/register';
     const options = await this.getOptions(true);
     return firstValueFrom(this.http.post(url, data, options));
+  }
+
+  public async changePassword(data: Partial<IChangePassword>): Promise<any> {
+    const url = this._baseUrl + 'api/auth/changePassword';
+    const options = await this.getOptions(true);
+    return await firstValueFrom(this.http.post(url, data, options));
   }
 
   public async saveSession(authSession?: IAuthSession): Promise<void> {
