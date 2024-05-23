@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>{{ data ? 'Modifică' : 'Adaugă' }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="d-flex flex-column justify-content-center">
+    <mat-form-field appearance="outline" class="my-2">
+      <mat-label>Nume</mat-label>
+      <input formControlName="name" matInput required>
+      <mat-error *ngIf="form.controls.name.touched && form.controls.name.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-2">
+      <mat-label>Durată</mat-label>
+      <input formControlName="duration" matInput required type="number">
+      <mat-error *ngIf="form.controls.duration.touched && form.controls.duration.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <div mat-dialog-actions class="d-flex justify-content-between">
+      <button mat-button mat-dialog-close>Close</button>
+      <div>
+        <button mat-raised-button color="warn" *ngIf="data != null" (click)="onDelete()">Șterge</button>
+        <button mat-raised-button color="primary" (click)="onSave(data != null)">{{ data ? 'Modifică' : 'Adaugă' }}</button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>

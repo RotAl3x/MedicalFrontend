@@ -1,6 +1,6 @@
 import {IEntity} from "../../models/entity";
 
 export interface IMedicalService extends IEntity{
-  name:string,
-  duration: number,
+  name:string | null,
+  duration: number | null,
 }

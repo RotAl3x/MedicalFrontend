@@ -14,6 +14,13 @@ import {
 } from "./admin/components/testimonial-upsert-page/testimonial-upsert-page.component";
 import {DoctorUpsertPageComponent} from "./admin/components/doctor-upsert-page/doctor-upsert-page.component";
 import {PriceUpsertPageComponent} from "./admin/components/price-upsert-page/price-upsert-page.component";
+import {
+  RoomOrDeviceUpsertPageComponent
+} from "./admin/components/room-or-device-upsert-page/room-or-device-upsert-page.component";
+import {
+  MedicalServiceUpsertPageComponent
+} from "./admin/components/medical-service-upsert-page/medical-service-upsert-page.component";
+import {DiseaseUpsertPageComponent} from "./admin/components/disease-upsert-page/disease-upsert-page.component";
 
 const routes: Routes = [
   {path: 'prices', component: PricesPageComponent},
@@ -27,6 +34,9 @@ const routes: Routes = [
   {path:'admin/testimonials', component:TestimonialUpsertPageComponent, canActivate:[loginGuard]},
   {path:'admin/doctors', component:DoctorUpsertPageComponent, canActivate:[loginGuard]},
   {path:'admin/prices', component:PriceUpsertPageComponent, canActivate:[loginGuard]},
+  {path:'admin/room-or-devices', component:RoomOrDeviceUpsertPageComponent, canActivate:[loginGuard]},
+  {path:'admin/medical-services',component:MedicalServiceUpsertPageComponent, canActivate:[loginGuard]},
+  {path:'admin/diseases',component:DiseaseUpsertPageComponent, canActivate:[loginGuard]},
   {path: '**', redirectTo: '/home', pathMatch: 'full'},
 
 ];

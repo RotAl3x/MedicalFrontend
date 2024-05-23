@@ -1,31 +1,29 @@
 import {Component, Inject, inject, OnInit} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormBuilder, Validators} from "@angular/forms";
-import {PriceService} from "../../../../services/price.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {IPrice} from "../../../../models/price";
+import {MedicalService} from "../../../services/medical.service";
+import {IMedicalService} from "../../../models/medical-service";
 
 @Component({
-  selector: 'app-price-upsert-dialog',
-  templateUrl: './price-upsert-dialog.component.html',
-  styleUrls: ['./price-upsert-dialog.component.scss']
+  selector: 'app-medical-service-upsert-dialog',
+  templateUrl: './medical-service-upsert-dialog.component.html',
+  styleUrls: ['./medical-service-upsert-dialog.component.scss']
 })
-export class PriceUpsertDialogComponent implements OnInit{
+export class MedicalServiceUpsertDialogComponent implements OnInit {
   private snack = inject(MatSnackBar);
-  private priceService = inject(PriceService);
+  medicalService = inject(MedicalService);
   private formBuilder = inject(FormBuilder);
   public form = this.formBuilder.group({
     id: [crypto.randomUUID()],
     isDeleted: [false],
     name: ['', [Validators.required]],
-    description: ['', [Validators.required]],
-    priceForOne: [0, [Validators.required]],
-    numberOfMeets: [0, [Validators.required]],
-    priceForAllMeets: [0, [Validators.required]],
+    duration: [0, [Validators.required]],
   })
+
   constructor(
-    public dialogRef: MatDialogRef<PriceUpsertDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IPrice | null,
+    public dialogRef: MatDialogRef<MedicalServiceUpsertDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: IMedicalService | null,
   ) {
   }
 
@@ -34,6 +32,7 @@ export class PriceUpsertDialogComponent implements OnInit{
       this.form.patchValue(this.data);
     }
   }
+
   openSnackBar(message: string, action: string) {
     this.snack.open(message, action);
   }
@@ -45,8 +44,8 @@ export class PriceUpsertDialogComponent implements OnInit{
       return;
     }
     try {
-      await this.priceService.delete(this.form.controls.id.value);
-      this.openSnackBar('Ofertă ștearsă', 'OK');
+      await this.medicalService.delete(this.form.controls.id.value);
+      this.openSnackBar('Serviciu medical șters', 'OK');
     } catch (e) {
       this.openSnackBar('Eroare', 'OK');
     }
@@ -61,9 +60,9 @@ export class PriceUpsertDialogComponent implements OnInit{
     }
     try {
       modified ?
-        await this.priceService.update(this.form.value) :
-        await this.priceService.create(this.form.value);
-      this.openSnackBar(`Ofertă ${modified ? 'modificată' : 'adaugătă'}`, 'OK');
+        await this.medicalService.update(this.form.value) :
+        await this.medicalService.create(this.form.value);
+      this.openSnackBar(`Serviciu medical ${modified ? 'modificat' : 'adaugăt'}`, 'OK');
     } catch (e) {
       this.openSnackBar('Eroare', 'OK');
     }

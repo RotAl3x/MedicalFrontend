@@ -1,0 +1,9 @@
+<div class="d-flex flex-column align-items-center cursor-pointer">
+  <h2 class="m-2">Servicii medicale</h2>
+  <button mat-raised-button class="m-2" (click)="openDialog()">Adaugă</button>
+  <div *ngFor="let medicalData of medicalServices" class="w-25 m-2">
+    <mat-card class="p-3" (click)="openDialog(medicalData)">
+      <mat-card-title>Serviciu medical: {{medicalData.name}}</mat-card-title>
+    </mat-card>
+  </div>
+</div>

@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {TestimonialPersonService} from "../../../../services/testimonial-person.service";
 import {ITestimonialPerson} from "../../../../models/testimonial-person";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PhotoService} from "../../../services/photo.service";
+import {SettingsService} from "../../../services/settings.service";
 
 @Component({
   selector: 'app-testimonial-upsert-dialog',
@@ -15,7 +15,7 @@ export class TestimonialUpsertDialogComponent implements OnInit {
   private snack = inject(MatSnackBar);
   private testimonialPersonService = inject(TestimonialPersonService);
   private formBuilder = inject(FormBuilder);
-  public photoService = inject(PhotoService);
+  public settingsService = inject(SettingsService);
   public form = this.formBuilder.group({
     id: [crypto.randomUUID()],
     isDeleted: [false],
@@ -44,7 +44,7 @@ export class TestimonialUpsertDialogComponent implements OnInit {
     let file: File = e.target.files[0];
     let formDate = new FormData();
     formDate.append('file', file);
-    let name = await this.photoService.addPhoto(formDate);
+    let name = await this.settingsService.addPhoto(formDate);
     this.form.controls.photoName.setValue(name);
   }
 

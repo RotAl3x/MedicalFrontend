@@ -19,4 +19,22 @@ export class RoomOrDeviceService {
     const url = this._baseUrl + 'api/roomOrDevice/getAll'
     return await firstValueFrom(this.http.get<IRoomOrDevice[]>(url));
   }
+
+  public async create(data: Partial<IRoomOrDevice>){
+    const url = this._baseUrl + 'api/roomOrDevice';
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.post<IRoomOrDevice>(url, data, options));
+  }
+
+  public async update(data: Partial<IRoomOrDevice>): Promise<IRoomOrDevice> {
+    const url = this._baseUrl + 'api/roomOrDevice';
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.put<IRoomOrDevice>(url, data, options));
+  }
+
+  public async delete(data: string | null): Promise<string> {
+    const url = this._baseUrl + 'api/roomOrDevice/' + data;
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.delete<string>(url, options));
+  }
 }

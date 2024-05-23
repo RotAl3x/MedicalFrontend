@@ -48,6 +48,12 @@ import { DoctorUpsertPageComponent } from './admin/components/doctor-upsert-page
 import { DoctorUpsertDialogComponent } from './admin/components/doctor-upsert-page/doctor-upsert-dialog/doctor-upsert-dialog.component';
 import { PriceUpsertPageComponent } from './admin/components/price-upsert-page/price-upsert-page.component';
 import { PriceUpsertDialogComponent } from './admin/components/price-upsert-page/price-upsert-dialog/price-upsert-dialog.component';
+import { RoomOrDeviceUpsertPageComponent } from './admin/components/room-or-device-upsert-page/room-or-device-upsert-page.component';
+import { RoomOrDeviceUpsertDialogComponent } from './admin/components/room-or-device-upsert-page/room-or-device-upsert-dialog/room-or-device-upsert-dialog.component';
+import { MedicalServiceUpsertPageComponent } from './admin/components/medical-service-upsert-page/medical-service-upsert-page.component';
+import { MedicalServiceUpsertDialogComponent } from './admin/components/medical-service-upsert-page/medical-service-upsert-dialog/medical-service-upsert-dialog.component';
+import { DiseaseUpsertPageComponent } from './admin/components/disease-upsert-page/disease-upsert-page.component';
+import { DiseaseUpsertDialogComponent } from './admin/components/disease-upsert-page/disease-upsert-dialog/disease-upsert-dialog.component';
 
 
 @NgModule({
@@ -72,7 +78,13 @@ import { PriceUpsertDialogComponent } from './admin/components/price-upsert-page
     DoctorUpsertPageComponent,
     DoctorUpsertDialogComponent,
     PriceUpsertPageComponent,
-    PriceUpsertDialogComponent
+    PriceUpsertDialogComponent,
+    RoomOrDeviceUpsertPageComponent,
+    RoomOrDeviceUpsertDialogComponent,
+    MedicalServiceUpsertPageComponent,
+    MedicalServiceUpsertDialogComponent,
+    DiseaseUpsertPageComponent,
+    DiseaseUpsertDialogComponent
   ],
   imports: [
     BrowserModule,

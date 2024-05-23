@@ -20,4 +20,22 @@ export class MedicalService {
     const url = this._baseUrl + 'api/medicalService/getAll'
     return await firstValueFrom(this.http.get<IMedicalService[]>(url));
   }
+
+  public async create(data: Partial<IMedicalService>){
+    const url = this._baseUrl + 'api/medicalService';
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.post<IMedicalService>(url, data, options));
+  }
+
+  public async update(data: Partial<IMedicalService>): Promise<IMedicalService> {
+    const url = this._baseUrl + 'api/medicalService';
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.put<IMedicalService>(url, data, options));
+  }
+
+  public async delete(data: string | null): Promise<string> {
+    const url = this._baseUrl + 'api/medicalService/' + data;
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.delete<string>(url, options));
+  }
 }

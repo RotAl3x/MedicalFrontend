@@ -1,7 +1,7 @@
 import {Component, Inject, inject, OnInit} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormBuilder, Validators} from "@angular/forms";
-import {PhotoService} from "../../../services/photo.service";
+import {SettingsService} from "../../../services/settings.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {DoctorService} from "../../../../services/doctor.service";
 import {IDoctor} from "../../../../models/doctor";
@@ -15,7 +15,7 @@ export class DoctorUpsertDialogComponent implements OnInit{
   private snack = inject(MatSnackBar);
   private doctorService = inject(DoctorService);
   private formBuilder = inject(FormBuilder);
-  public photoService = inject(PhotoService);
+  public settingsService = inject(SettingsService);
   public form = this.formBuilder.group({
     id: [crypto.randomUUID()],
     isDeleted: [false],
@@ -44,7 +44,7 @@ export class DoctorUpsertDialogComponent implements OnInit{
     let file: File = e.target.files[0];
     let formDate = new FormData();
     formDate.append('file', file);
-    let name = await this.photoService.addPhoto(formDate);
+    let name = await this.settingsService.addPhoto(formDate);
     this.form.controls.photoName.setValue(name);
   }
 
