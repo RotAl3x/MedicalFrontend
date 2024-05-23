@@ -13,7 +13,8 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field  appearance="outline">
-      <input matInput [ngxMatDatetimePicker]="picker" placeholder="Ora de start" formControlName="start">
+      <mat-label>Ora de start</mat-label>
+      <input matInput [ngxMatDatetimePicker]="picker" formControlName="start">
       <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
       <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
     </mat-form-field>
@@ -30,7 +31,8 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline" class="mb-2">
-      <input formControlName="phone" matInput placeholder="Numărul de telefon*">
+      <mat-label>Numărul de telefon</mat-label>
+      <input formControlName="phone" matInput>
       <mat-error *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['notMatch'] && !form.controls['phone'].errors?.['required']">
         Numărul de telefon incorect
       </mat-error>

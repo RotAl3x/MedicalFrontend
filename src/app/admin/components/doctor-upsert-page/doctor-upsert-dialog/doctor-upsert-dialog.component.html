@@ -1,14 +1,16 @@
 <h2 mat-dialog-title>{{ data ? 'Modifică' : 'Adaugă' }}</h2>
 <mat-dialog-content class="test">
   <form [formGroup]="form" class="d-flex flex-column justify-content-center">
-    <mat-form-field appearance="outline" class="mb-2">
-      <input formControlName="name" matInput placeholder="Nume" required>
+    <mat-form-field appearance="outline" class="my-2">
+      <mat-label>Nume</mat-label>
+      <input formControlName="name" matInput required>
       <mat-error *ngIf="form.controls.name.touched && form.controls.name.errors?.['required']">
         Obligatoriu
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="mb-2 textarea-container">
-      <textarea formControlName="description" matInput placeholder="Descriere" cdkTextareaAutosize required></textarea>
+      <mat-label>Descriere</mat-label>
+      <textarea formControlName="description" matInput cdkTextareaAutosize required></textarea>
       <mat-error *ngIf="form.controls.description.touched && form.controls.description.errors?.['required']">
         Obligatoriu
       </mat-error>

@@ -2,7 +2,8 @@
   <h2>Adaugă un doctor</h2>
   <form [formGroup]="form" class="form-inputs">
     <mat-form-field appearance="outline" class="mb-2">
-      <input formControlName="email" matInput placeholder="Email*">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput>
       <mat-error *ngIf="form.controls['email'].touched && form.controls['email'].errors?.['required']">
         Obligatoriu
       </mat-error>
@@ -12,21 +13,24 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="mb-2">
-      <input formControlName="lastName" matInput placeholder="Nume*">
+      <mat-label>Nume</mat-label>
+      <input formControlName="lastName" matInput>
       <mat-error *ngIf="form.controls['lastName'].touched && form.controls['lastName'].errors?.['required']">
         Obligatoriu
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="mb-2">
-      <input formControlName="firstName" matInput placeholder="Prenume*">
+      <mat-label>Prenume</mat-label>
+      <input formControlName="firstName" matInput>
       <mat-error *ngIf="form.controls['firstName'].touched && form.controls['firstName'].errors?.['required']">
         Obligatoriu
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="mb-2">
-      <input formControlName="phoneNumber" matInput placeholder="Numărul de telefon*">
+      <mat-label>Numărul de telefon</mat-label>
+      <input formControlName="phoneNumber" matInput>
       <mat-error *ngIf="form.controls['phoneNumber'].touched && form.controls['phoneNumber'].errors?.['required']">
         Obligatoriu
       </mat-error>
