@@ -3,6 +3,7 @@
   <div *ngFor="let doctor of doctorUsers" class="w-25 m-2">
     <mat-card class="p-3">
       <mat-card-title>Doctori: {{ doctor.firstName }} {{ doctor.lastName }}</mat-card-title>
+      <button (click)="onDelete(doctor.id)" color="warn" mat-raised-button>Șterge</button>
     </mat-card>
   </div>
 </div>

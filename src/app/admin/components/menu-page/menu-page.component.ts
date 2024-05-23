@@ -18,7 +18,9 @@ export class MenuPageComponent {
     ]
   }, {
     title: 'Doctori',
-    menu: [{name: 'Adaugă', route: 'register'}]
+    menu: [
+      {name: 'Adaugă', route: 'register'},
+      {name: 'Doctori', route: 'doctors-overview'}]
   }, {
     title: 'Website',
     menu: [
