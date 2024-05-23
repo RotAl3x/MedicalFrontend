@@ -1,9 +1,9 @@
 <div class="d-flex flex-column align-items-center cursor-pointer">
   <h2 class="m-2">Boli</h2>
-  <button mat-raised-button class="m-2" (click)="openDialog()">Adaugă</button>
+  <button (click)="openDialog()" class="m-2" mat-raised-button>Adaugă</button>
   <div *ngFor="let disease of diseases" class="w-25 m-2">
-    <mat-card class="p-3" (click)="openDialog(disease)">
-      <mat-card-title>Boală: {{disease.name}}</mat-card-title>
+    <mat-card (click)="openDialog(disease)" class="p-3">
+      <mat-card-title>Boală: {{ disease.name }}</mat-card-title>
     </mat-card>
   </div>
 </div>

@@ -3,7 +3,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {TestimonialPersonService} from "../../../../services/testimonial-person.service";
 import {ITestimonialPerson} from "../../../../models/testimonial-person";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {SettingsService} from "../../../services/settings.service";
 
 @Component({
@@ -12,10 +12,10 @@ import {SettingsService} from "../../../services/settings.service";
   styleUrls: ['./testimonial-upsert-dialog.component.scss']
 })
 export class TestimonialUpsertDialogComponent implements OnInit {
+  public settingsService = inject(SettingsService);
   private snack = inject(MatSnackBar);
   private testimonialPersonService = inject(TestimonialPersonService);
   private formBuilder = inject(FormBuilder);
-  public settingsService = inject(SettingsService);
   public form = this.formBuilder.group({
     id: [crypto.randomUUID()],
     isDeleted: [false],

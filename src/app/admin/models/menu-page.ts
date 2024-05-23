@@ -3,7 +3,7 @@ export interface IMenuPage {
   menu: IMenu[]
 }
 
-interface IMenu{
-  name:string,
-  route:string,
+interface IMenu {
+  name: string,
+  route: string,
 }

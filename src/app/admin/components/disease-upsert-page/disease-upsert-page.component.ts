@@ -12,7 +12,7 @@ import {DiseaseUpsertDialogComponent} from "./disease-upsert-dialog/disease-upse
 export class DiseaseUpsertPageComponent {
 
 
-  diseases: IDisease[]=[];
+  diseases: IDisease[] = [];
   diseaseService = inject(DiseaseService);
   private dialog = inject(MatDialog);
 
@@ -20,16 +20,16 @@ export class DiseaseUpsertPageComponent {
     await this.getAllDiseases();
   }
 
-  async getAllDiseases(){
+  async getAllDiseases() {
     this.diseases = await this.diseaseService.getAll();
   }
 
-  openDialog(disease?:IDisease){
+  openDialog(disease?: IDisease) {
     const dialogRef = this.dialog.open(DiseaseUpsertDialogComponent, {
       data: disease,
     });
     dialogRef.afterClosed().subscribe(async result => {
-      if(result) await this.getAllDiseases();
+      if (result) await this.getAllDiseases();
     });
   }
 }

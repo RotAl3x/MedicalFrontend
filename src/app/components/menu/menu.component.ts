@@ -8,15 +8,15 @@ import {AuthService} from "../../services/auth.service";
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-   router= inject(Router)
-   authService = inject(AuthService)
+  router = inject(Router)
+  authService = inject(AuthService)
 
 
-  isAdminPage(){
+  isAdminPage() {
     return this.router.url.includes('/admin')
   }
 
-  async logout(){
+  async logout() {
     await this.authService.logout();
   }
 

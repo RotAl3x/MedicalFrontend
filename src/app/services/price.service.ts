@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../environment/environment";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "./auth.service";
@@ -20,7 +20,7 @@ export class PriceService {
     return await firstValueFrom(this.http.get<IPrice[]>(url));
   }
 
-  public async create(data: Partial<IPrice>){
+  public async create(data: Partial<IPrice>) {
     const url = this._baseUrl + 'api/price';
     const options = await this.authService.getOptions(true);
     return await firstValueFrom(this.http.post<IPrice>(url, data, options));

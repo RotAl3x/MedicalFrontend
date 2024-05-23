@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../environment/environment";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "./auth.service";
-import {IDoctor} from "../models/doctor";
 import {firstValueFrom} from "rxjs";
 import {ITestimonialPerson} from "../models/testimonial-person";
 
@@ -21,7 +20,7 @@ export class TestimonialPersonService {
     return await firstValueFrom(this.http.get<ITestimonialPerson[]>(url));
   }
 
-  public async create(data: Partial<ITestimonialPerson>){
+  public async create(data: Partial<ITestimonialPerson>) {
     const url = this._baseUrl + 'api/testimonial-person';
     const options = await this.authService.getOptions(true);
     return await firstValueFrom(this.http.post<ITestimonialPerson>(url, data, options));

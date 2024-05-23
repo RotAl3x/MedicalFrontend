@@ -7,13 +7,13 @@ import {PriceService} from "../../services/price.service";
   templateUrl: './prices-page.component.html',
   styleUrls: ['./prices-page.component.scss']
 })
-export class PricesPageComponent implements OnInit{
-  prices:IPrice[]=[];
+export class PricesPageComponent implements OnInit {
+  prices: IPrice[] = [];
 
-  constructor(private priceService:PriceService) {
+  constructor(private priceService: PriceService) {
   }
 
   async ngOnInit() {
-    this.prices= await this.priceService.getAll();
+    this.prices = await this.priceService.getAll();
   }
 }

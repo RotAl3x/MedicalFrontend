@@ -7,15 +7,16 @@ import {IUser} from "../../../models/login";
   templateUrl: './all-doctors-page.component.html',
   styleUrls: ['./all-doctors-page.component.scss']
 })
-export class AllDoctorsPageComponent implements OnInit{
+export class AllDoctorsPageComponent implements OnInit {
   doctorUsers: IUser[] = []
 
   authService = inject(AuthService);
+
   async ngOnInit() {
     await this.getAllDoctors();
   }
 
-  async getAllDoctors(){
+  async getAllDoctors() {
     this.doctorUsers = await this.authService.getUsersByRole("Doctor");
   }
 

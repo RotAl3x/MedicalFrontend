@@ -8,12 +8,13 @@ import {AppointmentService} from "../../admin/services/appointment.service";
   templateUrl: './delete-appointment-page.component.html',
   styleUrls: ['./delete-appointment-page.component.scss']
 })
-export class DeleteAppointmentPageComponent implements OnInit{
+export class DeleteAppointmentPageComponent implements OnInit {
 
   private route = inject(ActivatedRoute);
   private snack = inject(MatSnackBar);
   private appointmentService = inject(AppointmentService);
   private id = '';
+
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id') ?? "";

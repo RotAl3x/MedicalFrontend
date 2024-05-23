@@ -1,10 +1,5 @@
-import { Injectable } from '@angular/core';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor, HttpResponse
-} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {catchError, map, Observable} from 'rxjs';
 import {LoadingService} from "../services/loading.service";
 
@@ -13,7 +8,8 @@ export class HttpRequestInterceptorInterceptor implements HttpInterceptor {
 
   constructor(
     private _loading: LoadingService
-  ) { }
+  ) {
+  }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this._loading.setLoading(true, request.url);

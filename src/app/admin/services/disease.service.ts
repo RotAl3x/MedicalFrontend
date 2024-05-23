@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../../environment/environment";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../services/auth.service";
@@ -21,7 +21,7 @@ export class DiseaseService {
   }
 
 
-  public async create(data: Partial<IDisease>){
+  public async create(data: Partial<IDisease>) {
     const url = this._baseUrl + 'api/disease';
     const options = await this.authService.getOptions(true);
     return await firstValueFrom(this.http.post<IDisease>(url, data, options));
@@ -36,6 +36,6 @@ export class DiseaseService {
   public async delete(data: string | null): Promise<string> {
     const url = this._baseUrl + 'api/disease/' + data;
     const options = await this.authService.getOptions(true);
-    return await firstValueFrom(this.http.delete<string>(url,options));
+    return await firstValueFrom(this.http.delete<string>(url, options));
   }
 }

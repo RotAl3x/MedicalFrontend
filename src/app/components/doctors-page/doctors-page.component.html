@@ -2,8 +2,8 @@
 <div class="container my-5">
   <div class="row">
     <div *ngFor="let doctor of doctors" class="col d-flex justify-content-center align-items-center m-4">
-      <app-medical-card [name]="doctor.name" [description]="doctor.description" [photoName]="doctor.photoName"
-                        [maxWidth]="550"></app-medical-card>
+      <app-medical-card [description]="doctor.description" [maxWidth]="550" [name]="doctor.name"
+                        [photoName]="doctor.photoName"></app-medical-card>
     </div>
   </div>
 </div>

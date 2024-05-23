@@ -11,9 +11,9 @@ import {IMedicalService} from "../../models/medical-service";
   templateUrl: './medical-service-upsert-page.component.html',
   styleUrls: ['./medical-service-upsert-page.component.scss']
 })
-export class MedicalServiceUpsertPageComponent implements OnInit{
+export class MedicalServiceUpsertPageComponent implements OnInit {
 
-  medicalServices: IMedicalService[]=[];
+  medicalServices: IMedicalService[] = [];
   medicalService = inject(MedicalService);
   private dialog = inject(MatDialog);
 
@@ -21,16 +21,16 @@ export class MedicalServiceUpsertPageComponent implements OnInit{
     await this.getAllTestimonialPerson();
   }
 
-  async getAllTestimonialPerson(){
+  async getAllTestimonialPerson() {
     this.medicalServices = await this.medicalService.getAll();
   }
 
-  openDialog(medicalServiceData?:IMedicalService){
+  openDialog(medicalServiceData?: IMedicalService) {
     const dialogRef = this.dialog.open(MedicalServiceUpsertDialogComponent, {
       data: medicalServiceData,
     });
     dialogRef.afterClosed().subscribe(async result => {
-      if(result) await this.getAllTestimonialPerson();
+      if (result) await this.getAllTestimonialPerson();
     });
   }
 }

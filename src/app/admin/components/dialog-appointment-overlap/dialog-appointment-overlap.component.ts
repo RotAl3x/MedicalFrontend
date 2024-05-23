@@ -7,13 +7,13 @@ import {MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./dialog-appointment-overlap.component.scss']
 })
 export class DialogAppointmentOverlapComponent {
-  dialogRef= inject(MatDialogRef<DialogAppointmentOverlapComponent>);
+  dialogRef = inject(MatDialogRef<DialogAppointmentOverlapComponent>);
 
-  closeNo(){
+  closeNo() {
     this.dialogRef.close(false);
   }
 
-  closeYes(){
+  closeYes() {
     this.dialogRef.close(true);
   }
 }

@@ -2,7 +2,6 @@ import {inject, Injectable} from '@angular/core';
 import {environment} from "../../../environment/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
-import {IRoomOrDevice} from "../models/room-or-device";
 import {AuthService} from "../../services/auth.service";
 
 @Injectable({
@@ -13,14 +12,14 @@ export class SettingsService {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
 
-  photoLink(name:string | null){
+  photoLink(name: string | null) {
     return `${this._baseUrl}api/settings/photo/${name}`
   }
 
-  async getDoctorPassword(): Promise<string>{
+  async getDoctorPassword(): Promise<string> {
     const url = this._baseUrl + 'api/settings/doctor-initial-password';
     const options = await this.authService.getOptions(true);
-    return await firstValueFrom(this.http.get<string>(url,options));
+    return await firstValueFrom(this.http.get<string>(url, options));
   }
 
   public async addPhoto(data: FormData): Promise<string> {

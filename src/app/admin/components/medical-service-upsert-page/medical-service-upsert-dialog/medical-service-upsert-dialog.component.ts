@@ -11,8 +11,8 @@ import {IMedicalService} from "../../../models/medical-service";
   styleUrls: ['./medical-service-upsert-dialog.component.scss']
 })
 export class MedicalServiceUpsertDialogComponent implements OnInit {
-  private snack = inject(MatSnackBar);
   medicalService = inject(MedicalService);
+  private snack = inject(MatSnackBar);
   private formBuilder = inject(FormBuilder);
   public form = this.formBuilder.group({
     id: [crypto.randomUUID()],

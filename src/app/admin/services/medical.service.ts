@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../../environment/environment";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../services/auth.service";
-import {IRoomOrDevice} from "../models/room-or-device";
 import {firstValueFrom} from "rxjs";
 import {IMedicalService} from "../models/medical-service";
 
@@ -21,7 +20,7 @@ export class MedicalService {
     return await firstValueFrom(this.http.get<IMedicalService[]>(url));
   }
 
-  public async create(data: Partial<IMedicalService>){
+  public async create(data: Partial<IMedicalService>) {
     const url = this._baseUrl + 'api/medicalService';
     const options = await this.authService.getOptions(true);
     return await firstValueFrom(this.http.post<IMedicalService>(url, data, options));

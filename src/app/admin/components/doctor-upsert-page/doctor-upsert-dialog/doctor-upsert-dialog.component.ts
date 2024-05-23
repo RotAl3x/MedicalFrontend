@@ -11,11 +11,11 @@ import {IDoctor} from "../../../../models/doctor";
   templateUrl: './doctor-upsert-dialog.component.html',
   styleUrls: ['./doctor-upsert-dialog.component.scss']
 })
-export class DoctorUpsertDialogComponent implements OnInit{
+export class DoctorUpsertDialogComponent implements OnInit {
+  public settingsService = inject(SettingsService);
   private snack = inject(MatSnackBar);
   private doctorService = inject(DoctorService);
   private formBuilder = inject(FormBuilder);
-  public settingsService = inject(SettingsService);
   public form = this.formBuilder.group({
     id: [crypto.randomUUID()],
     isDeleted: [false],

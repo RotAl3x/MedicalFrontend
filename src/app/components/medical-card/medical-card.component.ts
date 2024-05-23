@@ -7,13 +7,13 @@ import {environment} from "../../../environment/environment";
   styleUrls: ['./medical-card.component.scss']
 })
 export class MedicalCardComponent {
-  @Input() name:string|null='';
-  @Input() description:string|null='';
-  @Input() photoName:string|null='';
-  @Input() maxWidth:number=0;
+  @Input() name: string | null = '';
+  @Input() description: string | null = '';
+  @Input() photoName: string | null = '';
+  @Input() maxWidth: number = 0;
   private readonly _baseUrl = environment.apiUrl;
 
-  photoLink(name:string | null){
+  photoLink(name: string | null) {
     return `${this._baseUrl}api/settings/photo/${name}`
   }
 }

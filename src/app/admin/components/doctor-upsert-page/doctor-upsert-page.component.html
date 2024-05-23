@@ -1,9 +1,9 @@
 <div class="d-flex flex-column align-items-center cursor-pointer">
   <h2 class="m-2">Doctori Website</h2>
-  <button mat-raised-button class="m-2" (click)="openDialog()">Adaugă</button>
+  <button (click)="openDialog()" class="m-2" mat-raised-button>Adaugă</button>
   <div *ngFor="let doctor of doctors" class="w-25 m-2">
-    <mat-card class="p-3" (click)="openDialog(doctor)">
-      <mat-card-title>Persoană: {{doctor.name}}</mat-card-title>
+    <mat-card (click)="openDialog(doctor)" class="p-3">
+      <mat-card-title>Persoană: {{ doctor.name }}</mat-card-title>
     </mat-card>
   </div>
 </div>

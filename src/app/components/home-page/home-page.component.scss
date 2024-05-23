@@ -1,20 +1,22 @@
-.details-hover{
+.details-hover {
   cursor: default;
   transition: transform .2s;
-  &:hover{
+
+  &:hover {
     color: white;
     transform: scale(1.2);
   }
 }
 
-::ng-deep .carousel-control-prev-icon{
-  display: none;
-}
-::ng-deep .carousel-control-next-icon{
+::ng-deep .carousel-control-prev-icon {
   display: none;
 }
 
-.home-section-container{
+::ng-deep .carousel-control-next-icon {
+  display: none;
+}
+
+.home-section-container {
   min-height: 75vh;
   display: flex;
   flex-direction: column;

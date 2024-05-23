@@ -10,14 +10,13 @@ import {AuthService} from "../../../services/auth.service";
 })
 export class ChangePasswordPageComponent {
   private formBuilder = inject(FormBuilder);
-  private snack = inject(MatSnackBar);
-  private authService = inject(AuthService);
-
   public form = this.formBuilder.group({
     currentPassword: ['', [Validators.required]],
     newPassword: ['', [Validators.required, Validators.minLength(6)]],
     repeatPassword: ['', [Validators.required, this.matchPassword()]]
   })
+  private snack = inject(MatSnackBar);
+  private authService = inject(AuthService);
 
   openSnackBar(message: string, action: string) {
     this.snack.open(message, action);
@@ -26,7 +25,7 @@ export class ChangePasswordPageComponent {
   matchPassword(): (control: AbstractControl) => { notMatch: string } | null {
     return (control: AbstractControl) => {
       const hasError = control?.value ? control?.value?.toString() !== this.form.controls.newPassword.value : null;
-      return hasError? {notMatch: "not-match"}:  null;
+      return hasError ? {notMatch: "not-match"} : null;
     };
   }
 

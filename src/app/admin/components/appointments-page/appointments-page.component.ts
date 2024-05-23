@@ -27,15 +27,6 @@ import {DialogAppointmentOverlapComponent} from "../dialog-appointment-overlap/d
 })
 export class AppointmentsPageComponent implements OnInit {
 
-  private appointmentService = inject(AppointmentService);
-  private formBuilder = inject(FormBuilder);
-  private roomOrDeviceService = inject(RoomOrDeviceService);
-  private medicalServiceService = inject(MedicalService);
-  private diseaseService = inject(DiseaseService);
-  private authService = inject(AuthService);
-  private snack = inject(MatSnackBar);
-  private dialog = inject(MatDialog);
-
   events: Observable<any> | undefined;
   roomsOrDevices: Array<IRoomOrDevice> = [];
   medicalServices: Array<IMedicalService> = []
@@ -52,10 +43,8 @@ export class AppointmentsPageComponent implements OnInit {
     },
     plugins: [timeGridPlugin, interactionPlugin],
   };
-
-  constructor() {
-  }
-
+  private appointmentService = inject(AppointmentService);
+  private formBuilder = inject(FormBuilder);
   public form = this.formBuilder.group({
     roomOrDeviceId: [null],
     applicationUserId: [null],
@@ -69,6 +58,15 @@ export class AppointmentsPageComponent implements OnInit {
     isFreeDay: [false],
     isDoctorFreeDay: [false],
   })
+  private roomOrDeviceService = inject(RoomOrDeviceService);
+  private medicalServiceService = inject(MedicalService);
+  private diseaseService = inject(DiseaseService);
+  private authService = inject(AuthService);
+  private snack = inject(MatSnackBar);
+  private dialog = inject(MatDialog);
+
+  constructor() {
+  }
 
   handleDateClick(arg: EventClickArg) {
     this.dialog.open(DialogAppointmentComponent, {

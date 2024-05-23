@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {DoctorService} from "../../services/doctor.service";
 import {IDoctor} from "../../models/doctor";
-import {environment} from "../../../environment/environment";
 
 @Component({
   selector: 'app-doctors-page',
   templateUrl: './doctors-page.component.html',
   styleUrls: ['./doctors-page.component.scss']
 })
-export class DoctorsPageComponent implements OnInit{
-  doctors:IDoctor[] = [];
-  constructor(private doctorService:DoctorService) {
+export class DoctorsPageComponent implements OnInit {
+  doctors: IDoctor[] = [];
+
+  constructor(private doctorService: DoctorService) {
   }
 
   async ngOnInit() {
