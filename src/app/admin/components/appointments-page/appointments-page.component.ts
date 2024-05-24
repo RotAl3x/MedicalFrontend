@@ -53,6 +53,7 @@ export class AppointmentsPageComponent implements OnInit {
     startDateForMessage: [new Date()],
     medicalServiceId: ['', [Validators.required]],
     phone: ['', [Validators.required, this.phoneNumber()]],
+    name:[''],
     diseaseId: ['', [Validators.required]],
     isDeleted: [false],
     isFreeDay: [false],
