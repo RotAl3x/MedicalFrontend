@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex flex-column justify-content-center align-items-center">
   <form [formGroup]="form">
     <mat-form-field appearance="outline">
       <mat-label>Cameră/aparat</mat-label>
@@ -46,8 +46,10 @@
         Numărul de telefon incorect
       </mat-error>
     </mat-form-field>
-    <button (click)="submit()" class="ms-2" mat-raised-button>Adaugă</button>
   </form>
+  <div class="d-flex justify-content-center align-items-center">
+    <button (click)="submit()" mat-raised-button>Adaugă</button>
+  </div>
 </div>
 
 <full-calendar [events]="events | async" [options]="calendarOptions" class="m-2 mx-3"></full-calendar>
