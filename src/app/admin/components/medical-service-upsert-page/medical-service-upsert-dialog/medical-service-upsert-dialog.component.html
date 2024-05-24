@@ -15,11 +15,12 @@
         Obligatoriu
       </mat-error>
     </mat-form-field>
-    <div mat-dialog-actions class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between" mat-dialog-actions>
       <button mat-button mat-dialog-close>Close</button>
       <div>
-        <button mat-raised-button color="warn" *ngIf="data != null" (click)="onDelete()">Șterge</button>
-        <button mat-raised-button color="primary" (click)="onSave(data != null)">{{ data ? 'Modifică' : 'Adaugă' }}</button>
+        <button (click)="onDelete()" *ngIf="data != null" color="warn" mat-raised-button>Șterge</button>
+        <button (click)="onSave(data != null)" color="primary" mat-raised-button>{{ data ? 'Modifică' : 'Adaugă' }}
+        </button>
       </div>
     </div>
   </form>

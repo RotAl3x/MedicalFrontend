@@ -1,47 +1,52 @@
 <div class="d-flex justify-content-center">
   <form [formGroup]="form">
-    <mat-form-field  appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label>Cameră/aparat</mat-label>
       <mat-select formControlName="roomOrDeviceId">
-        <mat-option *ngFor="let room of roomsOrDevices" [value]="room.id">{{room.name}}</mat-option>
+        <mat-option *ngFor="let room of roomsOrDevices" [value]="room.id">{{ room.name }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field  appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label>Doctor</mat-label>
       <mat-select formControlName="applicationUserId">
-        <mat-option *ngFor="let doctorUser of doctorUsers" [value]="doctorUser.id">{{doctorUser.firstName}} {{doctorUser.lastName}}</mat-option>
+        <mat-option *ngFor="let doctorUser of doctorUsers"
+                    [value]="doctorUser.id">{{ doctorUser.firstName }} {{ doctorUser.lastName }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field  appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label>Ora de start</mat-label>
-      <input matInput [ngxMatDatetimePicker]="picker" formControlName="start">
-      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <input [ngxMatDatetimePicker]="picker" formControlName="start" matInput>
+      <mat-datepicker-toggle [for]="$any(picker)" matSuffix></mat-datepicker-toggle>
       <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Serviciu medical</mat-label>
       <mat-select formControlName="medicalServiceId">
-        <mat-option *ngFor="let medicalService of medicalServices" [value]="medicalService.id">{{medicalService.name}}</mat-option>
+        <mat-option *ngFor="let medicalService of medicalServices"
+                    [value]="medicalService.id">{{ medicalService.name }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Boală</mat-label>
       <mat-select formControlName="diseaseId">
-        <mat-option *ngFor="let disease of diseases" [value]="disease.id">{{disease.name}}</mat-option>
+        <mat-option *ngFor="let disease of diseases" [value]="disease.id">{{ disease.name }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline" class="mb-2">
       <mat-label>Numărul de telefon</mat-label>
       <input formControlName="phone" matInput>
-      <mat-error *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['notMatch'] && !form.controls['phone'].errors?.['required']">
+      <mat-error
+        *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['notMatch'] && !form.controls['phone'].errors?.['required']">
         Numărul de telefon incorect
       </mat-error>
     </mat-form-field>
-      <button class="ms-2" (click)="submit()" mat-raised-button>Adaugă</button>
+    <button (click)="submit()" class="ms-2" mat-raised-button>Adaugă</button>
   </form>
 </div>
 
-<full-calendar class="m-2 mx-3" [options]="calendarOptions"  [events]="events | async"></full-calendar>
+<full-calendar [events]="events | async" [options]="calendarOptions" class="m-2 mx-3"></full-calendar>
 
 <div class="mx-3 mt-1 mb-5">
   <h2><b>Legendă:</b></h2>

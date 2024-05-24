@@ -10,7 +10,7 @@ import {IPrice} from "../../../../models/price";
   templateUrl: './price-upsert-dialog.component.html',
   styleUrls: ['./price-upsert-dialog.component.scss']
 })
-export class PriceUpsertDialogComponent implements OnInit{
+export class PriceUpsertDialogComponent implements OnInit {
   private snack = inject(MatSnackBar);
   private priceService = inject(PriceService);
   private formBuilder = inject(FormBuilder);
@@ -23,6 +23,7 @@ export class PriceUpsertDialogComponent implements OnInit{
     numberOfMeets: [0, [Validators.required]],
     priceForAllMeets: [0, [Validators.required]],
   })
+
   constructor(
     public dialogRef: MatDialogRef<PriceUpsertDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IPrice | null,
@@ -34,6 +35,7 @@ export class PriceUpsertDialogComponent implements OnInit{
       this.form.patchValue(this.data);
     }
   }
+
   openSnackBar(message: string, action: string) {
     this.snack.open(message, action);
   }

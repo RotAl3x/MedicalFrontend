@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../../environment/environment";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../services/auth.service";
@@ -20,7 +20,7 @@ export class RoomOrDeviceService {
     return await firstValueFrom(this.http.get<IRoomOrDevice[]>(url));
   }
 
-  public async create(data: Partial<IRoomOrDevice>){
+  public async create(data: Partial<IRoomOrDevice>) {
     const url = this._baseUrl + 'api/roomOrDevice';
     const options = await this.authService.getOptions(true);
     return await firstValueFrom(this.http.post<IRoomOrDevice>(url, data, options));

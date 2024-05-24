@@ -10,7 +10,7 @@ import {IDisease} from "../../../models/disease";
   templateUrl: './disease-upsert-dialog.component.html',
   styleUrls: ['./disease-upsert-dialog.component.scss']
 })
-export class DiseaseUpsertDialogComponent implements OnInit{
+export class DiseaseUpsertDialogComponent implements OnInit {
   private snack = inject(MatSnackBar);
   private diseaseService = inject(DiseaseService);
   private formBuilder = inject(FormBuilder);
@@ -35,6 +35,7 @@ export class DiseaseUpsertDialogComponent implements OnInit{
   openSnackBar(message: string, action: string) {
     this.snack.open(message, action);
   }
+
   async onDelete() {
     this.form.markAllAsTouched();
     if (!this.form.valid) {

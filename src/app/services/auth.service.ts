@@ -46,6 +46,12 @@ export class AuthService {
     return await firstValueFrom(this.http.post(url, data, options));
   }
 
+  public async delete(id: string): Promise<string> {
+    const url = this._baseUrl + `api/auth/deleteAccount/${id}`;
+    const options = await this.getOptions(true);
+    return await firstValueFrom(this.http.delete<string>(url, options));
+  }
+
   public async saveSession(authSession?: IAuthSession): Promise<void> {
     if (authSession) {
       await firstValueFrom(this.storage.setItem(AuthService.tokenStorageKey, authSession.token));

@@ -9,7 +9,7 @@ import {DoctorUpsertDialogComponent} from "./doctor-upsert-dialog/doctor-upsert-
   templateUrl: './doctor-upsert-page.component.html',
   styleUrls: ['./doctor-upsert-page.component.scss']
 })
-export class DoctorUpsertPageComponent implements OnInit{
+export class DoctorUpsertPageComponent implements OnInit {
   doctors: IDoctor[] = []
   doctorService = inject(DoctorService);
   private dialog = inject(MatDialog);
@@ -18,16 +18,16 @@ export class DoctorUpsertPageComponent implements OnInit{
     await this.getAllDoctors()
   }
 
-  async getAllDoctors(){
-   this.doctors = await this.doctorService.getAll();
+  async getAllDoctors() {
+    this.doctors = await this.doctorService.getAll();
   }
 
-  openDialog(doctor?: IDoctor){
-    const dialogRef= this.dialog.open(DoctorUpsertDialogComponent,{
+  openDialog(doctor?: IDoctor) {
+    const dialogRef = this.dialog.open(DoctorUpsertDialogComponent, {
       data: doctor,
     })
     dialogRef.afterClosed().subscribe(async result => {
-      if(result) await this.getAllDoctors();
+      if (result) await this.getAllDoctors();
     });
   }
 }

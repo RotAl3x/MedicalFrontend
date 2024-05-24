@@ -10,26 +10,26 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./dialog-appointment.component.scss']
 })
 export class DialogAppointmentComponent {
-  eventDef:EventDef;
+  eventDef: EventDef;
   private snack = inject(MatSnackBar);
 
   constructor(
     public dialogRef: MatDialogRef<DialogAppointmentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: EventImpl,
-    private appointmentService:AppointmentService
+    private appointmentService: AppointmentService
   ) {
-    this.eventDef=data._def;
+    this.eventDef = data._def;
   }
+
   openSnackBar(message: string, action: string) {
     this.snack.open(message, action);
   }
 
- async onDelete() {
+  async onDelete() {
     try {
       await this.appointmentService.deleteAppointment(this.eventDef.publicId);
       this.openSnackBar('Programare ștearsă', 'OK');
-    }
-    catch (e) {
+    } catch (e) {
       this.openSnackBar('Eroare', 'OK');
     }
     this.dialogRef.close();

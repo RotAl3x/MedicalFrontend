@@ -4,20 +4,20 @@
     <h3 class="details-hover">{{ detail }}</h3>
   </div>
 </div>
-<div style="width: 99vw" class="home-section-container mb-4">
+<div class="home-section-container mb-4" style="width: 99vw">
   <carousel [isAnimated]="true">
     <slide *ngFor="let testimonialPerson of testimonialPersons; let index=index">
-      <app-medical-card [name]="testimonialPerson.name" [description]="testimonialPerson.description"
-                        [photoName]="testimonialPerson.photoName" [maxWidth]="1000"></app-medical-card>
+      <app-medical-card [description]="testimonialPerson.description" [maxWidth]="1000"
+                        [name]="testimonialPerson.name" [photoName]="testimonialPerson.photoName"></app-medical-card>
     </slide>
   </carousel>
   <br/>
 </div>
 <div *ngIf="apiLoaded | async" class="w-100 d-flex home-section-container background-third-color py-4">
   <h4 class="p-3">
-    <b>Adresa:</b> {{environment.address}}
+    <b>Adresa:</b> {{ environment.address }}
   </h4>
-  <google-map [options]="options" width="90vw" >
+  <google-map [options]="options" width="90vw">
     <map-marker [position]="markerPosition"></map-marker>
   </google-map>
 </div>

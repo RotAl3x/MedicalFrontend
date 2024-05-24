@@ -9,9 +9,9 @@ import {RoomOrDeviceUpsertDialogComponent} from "./room-or-device-upsert-dialog/
   templateUrl: './room-or-device-upsert-page.component.html',
   styleUrls: ['./room-or-device-upsert-page.component.scss']
 })
-export class RoomOrDeviceUpsertPageComponent implements OnInit{
+export class RoomOrDeviceUpsertPageComponent implements OnInit {
 
-  roomOrDevices: IRoomOrDevice[]=[];
+  roomOrDevices: IRoomOrDevice[] = [];
   roomOrDeviceService = inject(RoomOrDeviceService);
   private dialog = inject(MatDialog);
 
@@ -19,16 +19,16 @@ export class RoomOrDeviceUpsertPageComponent implements OnInit{
     await this.getAllRoomOrDevice();
   }
 
-  async getAllRoomOrDevice(){
+  async getAllRoomOrDevice() {
     this.roomOrDevices = await this.roomOrDeviceService.getAll();
   }
 
-  openDialog(roomOrDevice?:IRoomOrDevice){
+  openDialog(roomOrDevice?: IRoomOrDevice) {
     const dialogRef = this.dialog.open(RoomOrDeviceUpsertDialogComponent, {
       data: roomOrDevice,
     });
     dialogRef.afterClosed().subscribe(async result => {
-      if(result) await this.getAllRoomOrDevice();
+      if (result) await this.getAllRoomOrDevice();
     });
   }
 

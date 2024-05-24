@@ -31,10 +31,11 @@ export class HomePageComponent {
   markerPosition: google.maps.LatLngLiteral = {lat: environment.lat, lng: environment.lng}
   apiLoaded: Observable<boolean>;
 
-  testimonialPersons: ITestimonialPerson[]=[];
+  testimonialPersons: ITestimonialPerson[] = [];
+  protected readonly environment = environment;
 
   constructor(private doctorService: DoctorService,
-              private httpClient:HttpClient,
+              private httpClient: HttpClient,
               private testimonialPersonService: TestimonialPersonService) {
     this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsKey}`, 'callback')
       .pipe(
@@ -43,12 +44,9 @@ export class HomePageComponent {
       );
   }
 
-
   async ngOnInit() {
     this.testimonialPersons = await this.testimonialPersonService.getAll();
     const doctorCount = (await this.doctorService.getAll()).length;
     this.details.push(`${doctorCount} doctori experimentați`)
   }
-
-  protected readonly environment = environment;
 }

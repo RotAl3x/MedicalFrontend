@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,9 @@ import { BehaviorSubject } from 'rxjs';
 export class LoadingService {
   loadingSub: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   loadingMap: Map<string, boolean> = new Map<string, boolean>();
-  constructor() { }
+
+  constructor() {
+  }
 
   setLoading(loading: boolean, url: string): void {
     if (!url) {
@@ -16,7 +18,7 @@ export class LoadingService {
     if (loading) {
       this.loadingMap.set(url, loading);
       this.loadingSub.next(true);
-    }else if (!loading && this.loadingMap.has(url)) {
+    } else if (!loading && this.loadingMap.has(url)) {
       this.loadingMap.delete(url);
     }
     if (this.loadingMap.size === 0) {

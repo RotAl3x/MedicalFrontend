@@ -1,20 +1,20 @@
 <div class="menu-container d-flex justify-content-between align-items-center ps-5">
   <ng-container *ngIf="isAdminPage()">
-    <div class="cursor-pointer" [routerLink]="'admin/home'">Medical</div>
+    <div [routerLink]="'admin/home'" class="cursor-pointer">Medical</div>
     <div>
-      <button class="me-2" [routerLink]="'admin/change-password'" mat-raised-button>Schimbă parola</button>
-      <button class="me-4" (click)="logout()" mat-raised-button>Deconectați-vă</button>
+      <button [routerLink]="'admin/change-password'" class="me-2" mat-raised-button>Schimbă parola</button>
+      <button (click)="logout()" class="me-4" mat-raised-button>Deconectați-vă</button>
     </div>
   </ng-container>
   <ng-container *ngIf="!isAdminPage()">
-    <div class="cursor-pointer" [routerLink]="'/home'">Medical</div>
-    <button *ngIf="!isAdminPage()" mat-icon-button [matMenuTriggerFor]="menu" class="menu-button-container">
+    <div [routerLink]="'/home'" class="cursor-pointer">Medical</div>
+    <button *ngIf="!isAdminPage()" [matMenuTriggerFor]="menu" class="menu-button-container" mat-icon-button>
       <mat-icon>more_vert</mat-icon>
     </button>
   </ng-container>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="'/home'">Acasă</button>
-    <button mat-menu-item [routerLink]="'/doctors'">Doctori</button>
-    <button mat-menu-item [routerLink]="'/prices'">Oferte</button>
+    <button [routerLink]="'/home'" mat-menu-item>Acasă</button>
+    <button [routerLink]="'/doctors'" mat-menu-item>Doctori</button>
+    <button [routerLink]="'/prices'" mat-menu-item>Oferte</button>
   </mat-menu>
 </div>

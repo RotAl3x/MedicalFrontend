@@ -12,11 +12,11 @@ export interface IAuthSession {
 }
 
 export interface IRegister {
-  email: string|null,
-  firstName: string|null,
-  lastName: string|null,
-  phoneNumber: string|null,
-  password: string|null,
+  email: string | null,
+  firstName: string | null,
+  lastName: string | null,
+  phoneNumber: string | null,
+  password: string | null,
 }
 
 export interface IChangePassword {
@@ -31,7 +31,7 @@ export interface IUser {
   lastName: string;
 }
 
-export interface IRole{
+export interface IRole {
   "id": string,
   "name": string,
   "normalizedName": string,

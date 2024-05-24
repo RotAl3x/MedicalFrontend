@@ -1,4 +1,4 @@
-import {Component, OnInit, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {IPrice} from "../../../models/price";
 import {PriceService} from "../../../services/price.service";
 import {MatDialog} from "@angular/material/dialog";

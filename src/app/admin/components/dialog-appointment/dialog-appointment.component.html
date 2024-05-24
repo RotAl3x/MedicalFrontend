@@ -6,7 +6,7 @@
   <h3>Sfârșit: {{ data._instance?.range?.end| date:'dd/MM/yy, HH:mm' }}</h3>
   <h3>Serviciu: {{ data.extendedProps['medicalService'].name }}</h3>
   <h3>Boală: {{ data.extendedProps['disease'].name }}</h3>
-  <button mat-raised-button color="warn" (click)="onDelete()">Șterge</button>
+  <button (click)="onDelete()" color="warn" mat-raised-button>Șterge</button>
 </mat-dialog-content>
 
 

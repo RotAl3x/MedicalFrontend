@@ -34,7 +34,8 @@
       <mat-error *ngIf="form.controls['phoneNumber'].touched && form.controls['phoneNumber'].errors?.['required']">
         Obligatoriu
       </mat-error>
-      <mat-error *ngIf="form.controls['phoneNumber'].touched && form.controls['phoneNumber'].errors?.['notMatch'] && !form.controls['phoneNumber'].errors?.['required']">
+      <mat-error
+        *ngIf="form.controls['phoneNumber'].touched && form.controls['phoneNumber'].errors?.['notMatch'] && !form.controls['phoneNumber'].errors?.['required']">
         Numărul de telefon incorect
       </mat-error>
     </mat-form-field>
@@ -42,5 +43,5 @@
   <div class="d-flex justify-content-center width-350px mb-2">
     <button (click)="submit($event)" mat-raised-button>Adaugă</button>
   </div>
-  <div> Parola {{password}}</div>
+  <div> Parola {{ password }}</div>
 </div>

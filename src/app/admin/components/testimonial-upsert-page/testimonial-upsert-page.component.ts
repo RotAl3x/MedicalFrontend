@@ -9,9 +9,9 @@ import {TestimonialUpsertDialogComponent} from "./testimonial-upsert-dialog/test
   templateUrl: './testimonial-upsert-page.component.html',
   styleUrls: ['./testimonial-upsert-page.component.scss']
 })
-export class TestimonialUpsertPageComponent implements OnInit{
+export class TestimonialUpsertPageComponent implements OnInit {
 
-  testimonialPersons: ITestimonialPerson[]=[];
+  testimonialPersons: ITestimonialPerson[] = [];
   testimonialPersonService = inject(TestimonialPersonService);
   private dialog = inject(MatDialog);
 
@@ -19,16 +19,16 @@ export class TestimonialUpsertPageComponent implements OnInit{
     await this.getAllTestimonialPerson();
   }
 
-  async getAllTestimonialPerson(){
+  async getAllTestimonialPerson() {
     this.testimonialPersons = await this.testimonialPersonService.getAll();
   }
 
-  openDialog(testimonial?:ITestimonialPerson){
+  openDialog(testimonial?: ITestimonialPerson) {
     const dialogRef = this.dialog.open(TestimonialUpsertDialogComponent, {
       data: testimonial,
     });
     dialogRef.afterClosed().subscribe(async result => {
-      if(result) await this.getAllTestimonialPerson();
+      if (result) await this.getAllTestimonialPerson();
     });
   }
 

@@ -3,7 +3,6 @@ import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
 import {AuthService} from "../../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 import {SettingsService} from "../../services/settings.service";
 
 @Component({
@@ -11,14 +10,14 @@ import {SettingsService} from "../../services/settings.service";
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.scss']
 })
-export class RegisterPageComponent implements OnInit{
+export class RegisterPageComponent implements OnInit {
   public form = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
-    phoneNumber: ['', [Validators.required,this.phoneNumber()]],
+    phoneNumber: ['', [Validators.required, this.phoneNumber()]],
   })
-  public password:string = "";
+  public password: string = "";
 
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder,
@@ -38,7 +37,7 @@ export class RegisterPageComponent implements OnInit{
   phoneNumber(): (control: AbstractControl) => { notMatch: string } | null {
     return (control: AbstractControl) => {
       const hasError = !control.value.match('^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$');
-      return hasError? {notMatch: "not-match"}:  null;
+      return hasError ? {notMatch: "not-match"} : null;
     };
   }
 

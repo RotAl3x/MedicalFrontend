@@ -1,7 +1,7 @@
 <mat-dialog-content>
   <h3>Programarea pe care o încerci să o faci se suprapune cu alta programare. Ești sigur că vrei să o faci?</h3>
   <div class="d-flex justify-content-end">
-    <button mat-raised-button color="warn" class="me-2" (click)="closeNo()">Nu</button>
-    <button mat-raised-button color="primary" (click)="closeYes()">Da</button>
+    <button (click)="closeNo()" class="me-2" color="warn" mat-raised-button>Nu</button>
+    <button (click)="closeYes()" color="primary" mat-raised-button>Da</button>
   </div>
 </mat-dialog-content>

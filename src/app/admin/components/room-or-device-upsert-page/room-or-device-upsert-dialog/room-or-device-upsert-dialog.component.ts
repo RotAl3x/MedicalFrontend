@@ -10,7 +10,7 @@ import {IRoomOrDevice} from "../../../models/room-or-device";
   templateUrl: './room-or-device-upsert-dialog.component.html',
   styleUrls: ['./room-or-device-upsert-dialog.component.scss']
 })
-export class RoomOrDeviceUpsertDialogComponent implements OnInit{
+export class RoomOrDeviceUpsertDialogComponent implements OnInit {
   private snack = inject(MatSnackBar);
   private roomOrDeviceService = inject(RoomOrDeviceService);
   private formBuilder = inject(FormBuilder);
