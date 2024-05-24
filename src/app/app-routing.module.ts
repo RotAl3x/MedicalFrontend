@@ -23,6 +23,7 @@ import {
 import {DiseaseUpsertPageComponent} from "./admin/components/disease-upsert-page/disease-upsert-page.component";
 import {ChangePasswordPageComponent} from "./admin/components/change-password-page/change-password-page.component";
 import {AllDoctorsPageComponent} from "./admin/components/all-doctors-page/all-doctors-page.component";
+import {adminGuard} from "./admin/guards/admin.guard";
 
 const routes: Routes = [
   {path: 'prices', component: PricesPageComponent},
@@ -30,7 +31,7 @@ const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'appointment/delete/:id', component: DeleteAppointmentPageComponent},
-  {path: 'admin/register', component: RegisterPageComponent, canActivate: [loginGuard]},
+  {path: 'admin/register', component: RegisterPageComponent, canActivate: [adminGuard]},
   {path: 'admin/home', component: MenuPageComponent, canActivate: [loginGuard]},
   {path: 'admin/appointments', component: AppointmentsPageComponent, canActivate: [loginGuard]},
   {path: 'admin/testimonials', component: TestimonialUpsertPageComponent, canActivate: [loginGuard]},
@@ -40,7 +41,7 @@ const routes: Routes = [
   {path: 'admin/medical-services', component: MedicalServiceUpsertPageComponent, canActivate: [loginGuard]},
   {path: 'admin/diseases', component: DiseaseUpsertPageComponent, canActivate: [loginGuard]},
   {path: 'admin/change-password', component: ChangePasswordPageComponent, canActivate: [loginGuard]},
-  {path: 'admin/doctors-overview', component: AllDoctorsPageComponent, canActivate: [loginGuard]},
+  {path: 'admin/doctors-overview', component: AllDoctorsPageComponent, canActivate: [adminGuard]},
   {path: '**', redirectTo: '/home', pathMatch: 'full'},
 
 ];
