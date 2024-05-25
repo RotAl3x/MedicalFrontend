@@ -17,6 +17,8 @@ export class MenuPageComponent implements OnInit{
       {name: 'Cameră/aparat', route: 'room-or-devices'},
       {name: 'Servicii medicale', route: 'medical-services'},
       {name: 'Boli', route: 'diseases'},
+      {name: 'Zile libere cabinet', route: 'cabinet-free-days'},
+      {name: 'Zile libere doctor', route: 'doctor-free-days'},
     ]
   }, {
     title: 'Website',

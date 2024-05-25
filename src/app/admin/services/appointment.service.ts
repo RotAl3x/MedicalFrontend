@@ -46,4 +46,18 @@ export class AppointmentService {
     const url = this._baseUrl + `api/appointment/${id}`;
     return await firstValueFrom(this.http.delete<string>(url));
   }
+
+  async getCabinetFreeDays() {
+    const url = this._baseUrl + `api/appointment/cabinet-free-days`;
+    let options = await this.authService.getOptions(true);
+    options.responseType = null
+    return await firstValueFrom(this.http.get<IAppointment[]>(url, options));
+  }
+
+  async getDoctorFreeDays(id: string) {
+    const url = this._baseUrl + `api/appointment/doctor-free-days/${id}`;
+    let options = await this.authService.getOptions(true);
+    options.responseType = null;
+    return await firstValueFrom(this.http.get<IAppointment[]>(url, options));
+  }
 }

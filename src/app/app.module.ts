@@ -39,7 +39,7 @@ import {
 } from "@angular-material-components/datetime-picker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {DialogAppointmentComponent} from './admin/components/dialog-appointment/dialog-appointment.component';
-import {MAT_DATE_LOCALE} from "@angular/material/core";
+import {DateAdapter, MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 import {
   DialogAppointmentOverlapComponent
 } from './admin/components/dialog-appointment-overlap/dialog-appointment-overlap.component';
@@ -76,6 +76,8 @@ import {
 } from './admin/components/disease-upsert-page/disease-upsert-dialog/disease-upsert-dialog.component';
 import {AllDoctorsPageComponent} from './admin/components/all-doctors-page/all-doctors-page.component';
 import {ChangePasswordPageComponent} from './admin/components/change-password-page/change-password-page.component';
+import { CabinetFreeDaysPageComponent } from './admin/components/cabinet-free-days-page/cabinet-free-days-page.component';
+import { DoctorFreeDaysPageComponent } from './admin/components/doctor-free-days-page/doctor-free-days-page.component';
 
 
 @NgModule({
@@ -108,7 +110,9 @@ import {ChangePasswordPageComponent} from './admin/components/change-password-pa
     DiseaseUpsertPageComponent,
     DiseaseUpsertDialogComponent,
     AllDoctorsPageComponent,
-    ChangePasswordPageComponent
+    ChangePasswordPageComponent,
+    CabinetFreeDaysPageComponent,
+    DoctorFreeDaysPageComponent
   ],
   imports: [
     BrowserModule,
@@ -136,12 +140,13 @@ import {ChangePasswordPageComponent} from './admin/components/change-password-pa
     NgxMatDatetimePickerModule,
     MatDatepickerModule,
     NgxMatTimepickerModule,
-    NgxMatNativeDateModule
+    NgxMatNativeDateModule,
+    MatNativeDateModule
   ],
   providers: [
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
     {provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptorInterceptor, multi: true},
-    {provide: MAT_DATE_LOCALE, useValue: 'ro-Ro'}
+    {provide: MAT_DATE_LOCALE, useValue: 'ro-Ro'},
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,35 @@
+<div class="d-flex flex-column align-items-center cursor-pointer">
+  <h2 class="m-3">Zile libere doctor</h2>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Doctor</mat-label>
+      <mat-select formControlName="applicationUserId">
+        <mat-option *ngFor="let doctor of doctors"
+                    [value]="doctor.id">{{ doctor.firstName }} {{ doctor.lastName }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="form.controls.applicationUserId.touched && form.controls.applicationUserId.errors?.['required']">
+        Selectează doctor
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="ms-3">
+      <mat-label>Ziua</mat-label>
+      <input matInput formControlName="start" [matDatepicker]="datepicker" [matDatepickerFilter]="disableAlreadyFreeDays">
+      <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker>
+      </mat-datepicker>
+      <mat-error
+        *ngIf="form.controls['start'].touched && form.controls['start'].errors?.['required']">
+        Adaugă dată
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <button (click)="submit()" class="m-2" mat-raised-button>Adaugă</button>
+  <div *ngFor="let freeDay of doctorFreeDays" class="w-25 m-2">
+    <mat-card class="p-3">
+      <mat-card-title>Ziua: {{ freeDay.start | date:'dd/MM/yyyy' }}</mat-card-title>
+      <button (click)="onDelete(freeDay.id ?? '')" color="warn" mat-raised-button>Șterge</button>
+    </mat-card>
+  </div>
+</div>

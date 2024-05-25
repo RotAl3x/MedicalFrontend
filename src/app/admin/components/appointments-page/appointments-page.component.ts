@@ -70,9 +70,11 @@ export class AppointmentsPageComponent implements OnInit {
   }
 
   handleDateClick(arg: EventClickArg) {
-    this.dialog.open(DialogAppointmentComponent, {
-      data: arg.event,
-    });
+    if(!(arg.event._def.extendedProps['isFree'] || arg.event._def.extendedProps['isDoctorFree'])) {
+      this.dialog.open(DialogAppointmentComponent, {
+        data: arg.event,
+      });
+    }
   }
 
   async ngOnInit() {
@@ -110,7 +112,7 @@ export class AppointmentsPageComponent implements OnInit {
                 let indexDeleted = initialAppointments.findIndex(a => a.id == newAppointment.id)
                 initialAppointments.splice(indexDeleted, 1)
               } else {
-                if (newAppointment.roomOrDeviceId == this.form.controls.roomOrDeviceId.value
+                if ((newAppointment.roomOrDeviceId == this.form.controls.roomOrDeviceId.value && !newAppointment.isDoctorFree)
                   || newAppointment.applicationUserId == this.form.controls.applicationUserId.value
                   || newAppointment.isFree)
                   initialAppointments.push(newAppointment);
