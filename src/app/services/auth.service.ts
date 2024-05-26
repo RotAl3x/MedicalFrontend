@@ -108,7 +108,7 @@ export class AuthService {
 
   public async logout(): Promise<void> {
     await this.saveSession();
-    await this.router.navigate(['/']);
+    await this.router.navigate(['login']);
   }
 
   private async loadSession(): Promise<void> {

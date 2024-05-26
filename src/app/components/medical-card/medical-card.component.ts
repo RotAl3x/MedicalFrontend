@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {environment} from "../../../environment/environment";
+import {Component, inject, Input} from '@angular/core';
+import {SettingsService} from "../../admin/services/settings.service";
 
 @Component({
   selector: 'app-medical-card',
@@ -11,9 +11,9 @@ export class MedicalCardComponent {
   @Input() description: string | null = '';
   @Input() photoName: string | null = '';
   @Input() maxWidth: number = 0;
-  private readonly _baseUrl = environment.apiUrl;
+  settingsService = inject(SettingsService);
 
   photoLink(name: string | null) {
-    return `${this._baseUrl}api/settings/photo/${name}`
+    return this.settingsService.photoLink(name);
   }
 }

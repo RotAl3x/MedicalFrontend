@@ -78,6 +78,7 @@ import {AllDoctorsPageComponent} from './admin/components/all-doctors-page/all-d
 import {ChangePasswordPageComponent} from './admin/components/change-password-page/change-password-page.component';
 import { CabinetFreeDaysPageComponent } from './admin/components/cabinet-free-days-page/cabinet-free-days-page.component';
 import { DoctorFreeDaysPageComponent } from './admin/components/doctor-free-days-page/doctor-free-days-page.component';
+import { SettingsPageComponent } from './admin/components/settings-page/settings-page.component';
 
 
 @NgModule({
@@ -112,7 +113,8 @@ import { DoctorFreeDaysPageComponent } from './admin/components/doctor-free-days
     AllDoctorsPageComponent,
     ChangePasswordPageComponent,
     CabinetFreeDaysPageComponent,
-    DoctorFreeDaysPageComponent
+    DoctorFreeDaysPageComponent,
+    SettingsPageComponent
   ],
   imports: [
     BrowserModule,

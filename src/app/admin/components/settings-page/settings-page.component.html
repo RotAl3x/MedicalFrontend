@@ -1,0 +1,57 @@
+<div class="form-container">
+  <h2 class="m-2">Setări</h2>
+  <form [formGroup]="form" class="form-inputs">
+    <mat-form-field appearance="outline" class="mb-2">
+      <mat-label>Latitudine</mat-label>
+      <input formControlName="lat" matInput required type="number">
+      <mat-error *ngIf="form.controls.lat.touched && form.controls.lat.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-2">
+      <mat-label>Longitudine</mat-label>
+      <input formControlName="lng" matInput required type="number">
+      <mat-error *ngIf="form.controls.lng.touched && form.controls.lng.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-2">
+      <mat-label>Adresă</mat-label>
+      <input formControlName="address" matInput required>
+      <mat-error *ngIf="form.controls.address.touched && form.controls.address.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-2">
+      <mat-label>Număr de telefon</mat-label>
+      <input formControlName="phone" matInput required>
+      <mat-error *ngIf="form.controls.phone.touched && form.controls.phone.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-2">
+      <mat-label>Link Facebook</mat-label>
+      <input formControlName="linkFacebook" matInput required>
+      <mat-error *ngIf="form.controls.linkFacebook.touched && form.controls.linkFacebook.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-2">
+      <mat-label>Link Instagram</mat-label>
+      <input formControlName="linkInstagram" matInput required>
+      <mat-error *ngIf="form.controls.linkInstagram.touched && form.controls.linkInstagram.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="mb-2">
+      <mat-label>Program</mat-label>
+      <textarea cdkTextareaAutosize formControlName="workingHours" matInput required></textarea>
+      <mat-error *ngIf="form.controls.workingHours.touched && form.controls.workingHours.errors?.['required']">
+        Obligatoriu
+      </mat-error>
+    </mat-form-field>
+    <div class="d-flex justify-content-center width-350px mb-2">
+      <button (click)="onSave()" color="primary" mat-raised-button>Modifică</button>
+    </div>
+  </form>
+</div>

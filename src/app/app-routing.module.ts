@@ -26,6 +26,7 @@ import {AllDoctorsPageComponent} from "./admin/components/all-doctors-page/all-d
 import {adminGuard} from "./admin/guards/admin.guard";
 import {CabinetFreeDaysPageComponent} from "./admin/components/cabinet-free-days-page/cabinet-free-days-page.component";
 import {DoctorFreeDaysPageComponent} from "./admin/components/doctor-free-days-page/doctor-free-days-page.component";
+import {SettingsPageComponent} from "./admin/components/settings-page/settings-page.component";
 
 const routes: Routes = [
   {path: 'prices', component: PricesPageComponent},
@@ -46,6 +47,7 @@ const routes: Routes = [
   {path: 'admin/doctors-overview', component: AllDoctorsPageComponent, canActivate: [adminGuard]},
   {path: 'admin/cabinet-free-days', component: CabinetFreeDaysPageComponent, canActivate: [loginGuard]},
   {path: 'admin/doctor-free-days', component: DoctorFreeDaysPageComponent, canActivate: [loginGuard]},
+  {path: 'admin/settings', component:SettingsPageComponent, canActivate:[adminGuard]},
   {path: '**', redirectTo: '/home', pathMatch: 'full'},
 
 ];

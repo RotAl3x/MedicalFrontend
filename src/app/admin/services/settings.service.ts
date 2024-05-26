@@ -3,6 +3,7 @@ import {environment} from "../../../environment/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
 import {AuthService} from "../../services/auth.service";
+import {ISettings} from "../../models/settings";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,23 @@ export class SettingsService {
     const url = this._baseUrl + 'api/settings/doctor-initial-password';
     const options = await this.authService.getOptions(true);
     return await firstValueFrom(this.http.get<string>(url, options));
+  }
+
+  async getSettings(): Promise<ISettings> {
+    const url = this._baseUrl + 'api/settings';
+    return await firstValueFrom(this.http.get<ISettings>(url));
+  }
+
+  async createSettings(settings: Partial<ISettings>): Promise<ISettings> {
+    const url = this._baseUrl + 'api/settings';
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.post<ISettings>(url, settings, options));
+  }
+
+  async updateSettings(settings: Partial<ISettings>): Promise<ISettings> {
+    const url = this._baseUrl + 'api/settings';
+    const options = await this.authService.getOptions(true);
+    return await firstValueFrom(this.http.put<ISettings>(url, settings, options));
   }
 
   public async addPhoto(data: FormData): Promise<string> {

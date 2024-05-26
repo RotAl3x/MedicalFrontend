@@ -15,9 +15,9 @@
 </div>
 <div *ngIf="apiLoaded | async" class="w-100 d-flex home-section-container background-third-color py-4">
   <h4 class="p-3">
-    <b>Adresa:</b> {{ environment.address }}
+    <b>Adresa:</b> {{ settings?.address }}
   </h4>
-  <google-map [options]="options" width="90vw">
+  <google-map [options]="options" width="80vw">
     <map-marker [position]="markerPosition"></map-marker>
   </google-map>
 </div>
