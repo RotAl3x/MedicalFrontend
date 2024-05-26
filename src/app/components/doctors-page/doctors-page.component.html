@@ -1,8 +1,8 @@
 <app-header [title]="'Doctori din cabinet'"></app-header>
 <div class="container my-5 d-flex justify-content-center">
   <div class="row">
-    <div *ngFor="let doctor of doctors" class="col d-flex justify-content-center align-items-center my-3">
-      <app-medical-card [description]="doctor.description" [maxWidth]="550" [name]="doctor.name"
+    <div *ngFor="let doctor of doctors" class="col d-flex justify-content-center align-items-start my-3">
+      <app-medical-card [description]="doctor.description" [maxWidth]="550" [name]="doctor.name" class="d-flex h-100"
                         [photoName]="doctor.photoName"></app-medical-card>
     </div>
   </div>
