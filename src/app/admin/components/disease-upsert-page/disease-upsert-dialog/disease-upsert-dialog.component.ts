@@ -37,14 +37,9 @@ export class DiseaseUpsertDialogComponent implements OnInit {
   }
 
   async onDelete() {
-    this.form.markAllAsTouched();
-    if (!this.form.valid) {
-      this.openSnackBar('Verifică formularul', 'OK');
-      return;
-    }
     try {
       await this.diseaseService.delete(this.form.controls.id.value);
-      this.openSnackBar('Boală șters', 'OK');
+      this.openSnackBar('Boală ștearsă', 'OK');
     } catch (e) {
       this.openSnackBar('Eroare', 'OK');
     }
@@ -61,7 +56,7 @@ export class DiseaseUpsertDialogComponent implements OnInit {
       modified ?
         await this.diseaseService.update(this.form.value) :
         await this.diseaseService.create(this.form.value);
-      this.openSnackBar(`Boală ${modified ? 'modificat' : 'adaugăt'}`, 'OK');
+      this.openSnackBar(`Boală ${modified ? 'modificată' : 'adaugătă'}`, 'OK');
     } catch (e) {
       this.openSnackBar('Eroare', 'OK');
     }
