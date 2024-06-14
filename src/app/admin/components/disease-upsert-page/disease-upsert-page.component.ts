@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {IDisease} from "../../models/disease";
 import {DiseaseService} from "../../services/disease.service";
@@ -9,9 +9,7 @@ import {DiseaseUpsertDialogComponent} from "./disease-upsert-dialog/disease-upse
   templateUrl: './disease-upsert-page.component.html',
   styleUrls: ['./disease-upsert-page.component.scss']
 })
-export class DiseaseUpsertPageComponent {
-
-
+export class DiseaseUpsertPageComponent implements OnInit{
   diseases: IDisease[] = [];
   diseaseService = inject(DiseaseService);
   private dialog = inject(MatDialog);
