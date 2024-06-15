@@ -40,7 +40,7 @@ export class ChangePasswordPageComponent {
       this.openSnackBar('Parola a fost schimbată cu succes!', 'OK');
 
     } catch (e: any) {
-      this.openSnackBar(e.error ?? "Eroare", 'OK');
+      this.openSnackBar(e.error ?? "Parola veche greşită", 'OK');
     }
   }
 }
