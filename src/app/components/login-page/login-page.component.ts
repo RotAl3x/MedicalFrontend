@@ -44,7 +44,7 @@ export class LoginPageComponent {
       await new Promise(f => setTimeout(f, 500));
       await this.router.navigate(['/admin/home']);
     } catch (e) {
-      this.openSnackBar('Mail-ul sau parola incorectă', 'OK');
+      this.openSnackBar('Mail-ul sau parola incorecte', 'OK');
     }
   }
 }
