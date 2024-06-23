@@ -3,8 +3,9 @@
   <form [formGroup]="form">
     <mat-form-field appearance="outline">
       <mat-label>Ziua</mat-label>
-      <input matInput formControlName="start" [matDatepicker]="datepicker" [matDatepickerFilter]="disableAlreadyFreeDays">
-      <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <input [matDatepickerFilter]="disableAlreadyFreeDays" [matDatepicker]="datepicker" formControlName="start"
+             matInput>
+      <mat-datepicker-toggle [for]="datepicker" matIconSuffix></mat-datepicker-toggle>
       <mat-datepicker #datepicker>
       </mat-datepicker>
       <mat-error

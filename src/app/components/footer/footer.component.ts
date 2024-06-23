@@ -7,12 +7,12 @@ import {SettingsService} from "../../admin/services/settings.service";
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit{
+export class FooterComponent implements OnInit {
 
   settings!: ISettings;
   settingsService = inject(SettingsService);
 
-  async ngOnInit(){
+  async ngOnInit() {
     this.settings = await this.settingsService.getSettings();
   }
 

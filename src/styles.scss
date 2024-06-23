@@ -7,55 +7,55 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
-body{
+body {
   background-color: #f7f7f7;
 }
 
 
-.form-container{
+.form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
 }
 
-.form-inputs{
+.form-inputs {
   display: flex;
   flex-direction: column;
   width: 350px;
   padding: 60px 0;
 }
 
-.width-350px{
+.width-350px {
   width: 350px;
 }
 
-.background-primary-color{
+.background-primary-color {
   background-color: variables.$primary-color !important;
 }
 
-.background-secondary-color{
+.background-secondary-color {
   background-color: variables.$secondary-color !important;
 }
 
-.background-third-color{
+.background-third-color {
   background-color: variables.$third-color !important;
 }
 
-.color-primary-color{
+.color-primary-color {
   color: variables.$primary-color;
 }
 
-.background-image-blue{
+.background-image-blue {
   background: url("/assets/images/header-blue-image.jpeg") no-repeat center;
   background-size: cover;
 }
 
-.breaking-line{
+.breaking-line {
   white-space: pre-line;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
 
@@ -74,11 +74,11 @@ body{
   border: none !important;
 }
 
-.textarea-container{
+.textarea-container {
   width: 800px;
 }
 
-.img-website{
+.img-website {
   width: 150px;
   height: 150px;
 }

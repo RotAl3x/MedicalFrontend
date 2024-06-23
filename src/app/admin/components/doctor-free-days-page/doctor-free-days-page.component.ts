@@ -17,9 +17,7 @@ export class DoctorFreeDaysPageComponent implements OnInit {
   doctors: IUser[] = [];
   appointmentService = inject(AppointmentService);
   authService = inject(AuthService);
-  private snack = inject(MatSnackBar);
   formBuilder = inject(FormBuilder);
-
   public form = this.formBuilder.group({
     roomOrDeviceId: [null],
     applicationUserId: ['', [Validators.required]],
@@ -34,6 +32,7 @@ export class DoctorFreeDaysPageComponent implements OnInit {
     isFreeDay: [false],
     isDoctorFreeDay: [true],
   })
+  private snack = inject(MatSnackBar);
 
   async ngOnInit() {
     this.form.controls.start.disable();
@@ -55,8 +54,8 @@ export class DoctorFreeDaysPageComponent implements OnInit {
       let newDateTime = newDate.getTime();
       return new Date(newDateTime + getOffSet * 60 * 1000)
     }
-    this.doctorFreeDays.forEach(d=>{
-      console.log(formatDate(d.start ?? new Date()).getTime()==date?.getTime());
+    this.doctorFreeDays.forEach(d => {
+      console.log(formatDate(d.start ?? new Date()).getTime() == date?.getTime());
     });
     return !this.doctorFreeDays.filter(d => new Date(d.start ?? new Date()).getTime() == date?.getTime()).length;
   }
