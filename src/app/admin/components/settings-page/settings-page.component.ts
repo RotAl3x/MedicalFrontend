@@ -9,11 +9,10 @@ import {ISettings} from "../../../models/settings";
   templateUrl: './settings-page.component.html',
   styleUrls: ['./settings-page.component.scss']
 })
-export class SettingsPageComponent implements OnInit{
+export class SettingsPageComponent implements OnInit {
   public settingsService = inject(SettingsService);
-  private snack = inject(MatSnackBar);
   settings: ISettings | undefined;
-
+  private snack = inject(MatSnackBar);
   private formBuilder = inject(FormBuilder);
   public form = this.formBuilder.group({
     id: [crypto.randomUUID()],

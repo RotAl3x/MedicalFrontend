@@ -4,17 +4,15 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {LocalStorage} from "@ngx-pwa/local-storage";
 import {IAuthSession, IChangePassword, ILogin, IRegister, IUser} from "../models/login";
-import {firstValueFrom, map, tap} from "rxjs";
+import {firstValueFrom} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private static readonly tokenStorageKey: string = 'token';
-  private static readonly sessionStorageKey: string = 'session';
-  private _token?: string;
-  private _session?: IAuthSession;
-  private _authState: EventEmitter<boolean> = new EventEmitter();
+  private token?: string;
+  private session?: IAuthSession;
+  private authState: EventEmitter<boolean> = new EventEmitter();
   private readonly _baseUrl = environment.apiUrl;
 
 
@@ -23,27 +21,23 @@ export class AuthService {
               private router: Router) {
   }
 
-  public async login(requestModel: Partial<ILogin>): Promise<any> {
+  public async login(requestModel: Partial<ILogin>): Promise<boolean> {
     const url = this._baseUrl + 'api/auth/login';
-    return firstValueFrom(this.http.post<IAuthSession>(url, requestModel)
-      .pipe(tap(async res => {
-        await this.saveSession(res);
-      }))
-      .pipe(map(() => {
-        return true;
-      })));
+    const session = await firstValueFrom(this.http.post<IAuthSession>(url, requestModel));
+    await this.saveSession(session);
+    return true;
   }
 
-  public async register(data: Partial<IRegister>): Promise<any> {
+  public async register(data: Partial<IRegister>): Promise<string> {
     const url = this._baseUrl + 'api/auth/register';
     const options = await this.getOptions(true);
-    return firstValueFrom(this.http.post(url, data, options));
+    return firstValueFrom(this.http.post<string>(url, data, options));
   }
 
-  public async changePassword(data: Partial<IChangePassword>): Promise<any> {
+  public async changePassword(data: Partial<IChangePassword>): Promise<string> {
     const url = this._baseUrl + 'api/auth/changePassword';
     const options = await this.getOptions(true);
-    return await firstValueFrom(this.http.post(url, data, options));
+    return await firstValueFrom(this.http.post<string>(url, data, options));
   }
 
   public async delete(id: string): Promise<string> {
@@ -53,47 +47,34 @@ export class AuthService {
   }
 
   public async saveSession(authSession?: IAuthSession): Promise<void> {
-    if (authSession) {
-      await firstValueFrom(this.storage.setItem(AuthService.tokenStorageKey, authSession.token));
-      await firstValueFrom(this.storage.setItem(AuthService.sessionStorageKey, authSession));
-    } else {
-      await firstValueFrom(this.storage.removeItem(AuthService.tokenStorageKey));
-      await firstValueFrom(this.storage.removeItem(AuthService.sessionStorageKey));
-    }
+    await firstValueFrom(this.storage.setItem('token', authSession?.token));
+    await firstValueFrom(this.storage.setItem('session', authSession));
+    await this.loadSession();
+  }
+
+  public async deleteSession(): Promise<void> {
+    await firstValueFrom(this.storage.clear());
     await this.loadSession();
   }
 
   public async getOptions(needsAuth?: boolean): Promise<{ headers?: HttpHeaders, responseType: any }> {
-    return {headers: await this.getHeaders(needsAuth), responseType: 'text'};
+    let headers = new HttpHeaders()
+    const session = await this.getSession();
+
+    if (session) {
+      headers = new HttpHeaders().append('Authorization', `${session.tokenType} ${session.token}`);
+    }
+
+    return {headers: headers, responseType: 'text'};
   }
 
   public async hasRole(role: string): Promise<boolean> {
     const session = await this.getSession();
-    if (!session || !session.role) {
-      return false;
-    }
-
-    return session.role.indexOf(role) !== -1;
-  }
-
-  public async getHeaders(needsAuth?: boolean): Promise<HttpHeaders> {
-    if (!needsAuth) {
-      return new HttpHeaders();
-    }
-    const session = await this.getSession();
-
-    if (!session) {
-      return new HttpHeaders();
-    }
-
-    return new HttpHeaders().append('Authorization', `${session.tokenType} ${session.token}`);
+    return session?.role?.includes(role);
   }
 
   public async getSession(): Promise<IAuthSession> {
-    if (!this._session) {
-      this._session = <IAuthSession>await firstValueFrom(this.storage.getItem(AuthService.sessionStorageKey));
-    }
-    return this._session;
+    return this.session ?? (<IAuthSession>await firstValueFrom(this.storage.getItem('session')));
   }
 
   public async getUsersByRole(role: string): Promise<IUser[]> {
@@ -101,28 +82,19 @@ export class AuthService {
     return await firstValueFrom(this.http.get<IUser[]>(url));
   }
 
-  public async getAllRoles(): Promise<string[]> {
-    const url = this._baseUrl + 'api/auth/getAllRoles';
-    return await firstValueFrom(this.http.get<string[]>(url));
-  }
-
   public async logout(): Promise<void> {
-    await this.saveSession();
+    await this.deleteSession();
     await this.router.navigate(['login']);
   }
 
   private async loadSession(): Promise<void> {
-    const initialStatus = !!this._token;
-    const oldToken = this._token;
-    this._token = <string>await firstValueFrom(this.storage.getItem(AuthService.tokenStorageKey));
-    if (this._token) {
-      this._session = <IAuthSession>await firstValueFrom(this.storage.getItem(AuthService.sessionStorageKey));
-    } else {
-      this._session = undefined;
-    }
-    const differentStatus = initialStatus !== !!this._token || oldToken !== this._token;
-    if (differentStatus) {
-      this._authState.emit(!!this._token);
+    const initialStatus = !!this.token;
+    const oldToken = this.token;
+    this.token = <string>await firstValueFrom(this.storage.getItem('token'));
+    this.session = this.token ? <IAuthSession>await firstValueFrom(this.storage.getItem('session')) : undefined;
+
+    if (initialStatus !== !!this.token || oldToken !== this.token) {
+      this.authState.emit(!!this.token);
     }
   }
 }

@@ -10,8 +10,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class AllDoctorsPageComponent implements OnInit {
   doctorUsers: IUser[] = []
-  private snack = inject(MatSnackBar);
   authService = inject(AuthService);
+  private snack = inject(MatSnackBar);
 
   async ngOnInit() {
     await this.getAllDoctors();
@@ -25,7 +25,7 @@ export class AllDoctorsPageComponent implements OnInit {
     this.doctorUsers = await this.authService.getUsersByRole("Doctor");
   }
 
-  async onDelete(doctorId: string){
+  async onDelete(doctorId: string) {
     try {
       await this.authService.delete(doctorId);
       this.openSnackBar('Doctor șters', 'OK');

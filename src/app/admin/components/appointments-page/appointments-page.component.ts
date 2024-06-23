@@ -53,7 +53,7 @@ export class AppointmentsPageComponent implements OnInit {
     startDateForMessage: [new Date()],
     medicalServiceId: ['', [Validators.required]],
     phone: ['', [Validators.required, this.phoneNumber()]],
-    name:[''],
+    name: [''],
     diseaseId: ['', [Validators.required]],
     isDeleted: [false],
     isFreeDay: [false],
@@ -70,7 +70,7 @@ export class AppointmentsPageComponent implements OnInit {
   }
 
   handleDateClick(arg: EventClickArg) {
-    if(!(arg.event._def.extendedProps['isFree'] || arg.event._def.extendedProps['isDoctorFree'])) {
+    if (!(arg.event._def.extendedProps['isFree'] || arg.event._def.extendedProps['isDoctorFree'])) {
       this.dialog.open(DialogAppointmentComponent, {
         data: arg.event,
       });

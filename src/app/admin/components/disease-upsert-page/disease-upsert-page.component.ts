@@ -9,7 +9,7 @@ import {DiseaseUpsertDialogComponent} from "./disease-upsert-dialog/disease-upse
   templateUrl: './disease-upsert-page.component.html',
   styleUrls: ['./disease-upsert-page.component.scss']
 })
-export class DiseaseUpsertPageComponent implements OnInit{
+export class DiseaseUpsertPageComponent implements OnInit {
   diseases: IDisease[] = [];
   diseaseService = inject(DiseaseService);
   private dialog = inject(MatDialog);

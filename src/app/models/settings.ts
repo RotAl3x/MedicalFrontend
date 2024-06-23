@@ -1,6 +1,6 @@
 import {IEntity} from "./entity";
 
-export interface ISettings extends IEntity{
+export interface ISettings extends IEntity {
   lat: number | null;
   lng: number | null;
   address: string | null;

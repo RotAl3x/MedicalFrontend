@@ -13,9 +13,7 @@ export class CabinetFreeDaysPageComponent implements OnInit {
 
   cabinetFreeDays: IAppointment[] = [];
   appointmentService = inject(AppointmentService);
-  private snack = inject(MatSnackBar);
   formBuilder = inject(FormBuilder);
-
   public form = this.formBuilder.group({
     roomOrDeviceId: [null],
     applicationUserId: [null],
@@ -30,6 +28,7 @@ export class CabinetFreeDaysPageComponent implements OnInit {
     isFreeDay: [true],
     isDoctorFreeDay: [false],
   })
+  private snack = inject(MatSnackBar);
 
   async ngOnInit() {
     await this.getCabinetFreeDays();

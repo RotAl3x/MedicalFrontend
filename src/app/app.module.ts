@@ -39,7 +39,7 @@ import {
 } from "@angular-material-components/datetime-picker";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {DialogAppointmentComponent} from './admin/components/dialog-appointment/dialog-appointment.component';
-import {DateAdapter, MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
+import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 import {
   DialogAppointmentOverlapComponent
 } from './admin/components/dialog-appointment-overlap/dialog-appointment-overlap.component';
@@ -76,9 +76,9 @@ import {
 } from './admin/components/disease-upsert-page/disease-upsert-dialog/disease-upsert-dialog.component';
 import {AllDoctorsPageComponent} from './admin/components/all-doctors-page/all-doctors-page.component';
 import {ChangePasswordPageComponent} from './admin/components/change-password-page/change-password-page.component';
-import { CabinetFreeDaysPageComponent } from './admin/components/cabinet-free-days-page/cabinet-free-days-page.component';
-import { DoctorFreeDaysPageComponent } from './admin/components/doctor-free-days-page/doctor-free-days-page.component';
-import { SettingsPageComponent } from './admin/components/settings-page/settings-page.component';
+import {CabinetFreeDaysPageComponent} from './admin/components/cabinet-free-days-page/cabinet-free-days-page.component';
+import {DoctorFreeDaysPageComponent} from './admin/components/doctor-free-days-page/doctor-free-days-page.component';
+import {SettingsPageComponent} from './admin/components/settings-page/settings-page.component';
 
 
 @NgModule({

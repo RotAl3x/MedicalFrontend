@@ -47,9 +47,8 @@ const routes: Routes = [
   {path: 'admin/doctors-overview', component: AllDoctorsPageComponent, canActivate: [adminGuard]},
   {path: 'admin/cabinet-free-days', component: CabinetFreeDaysPageComponent, canActivate: [loginGuard]},
   {path: 'admin/doctor-free-days', component: DoctorFreeDaysPageComponent, canActivate: [loginGuard]},
-  {path: 'admin/settings', component:SettingsPageComponent, canActivate:[adminGuard]},
+  {path: 'admin/settings', component: SettingsPageComponent, canActivate: [adminGuard]},
   {path: '**', redirectTo: '/home', pathMatch: 'full'},
-
 ];
 
 @NgModule({
